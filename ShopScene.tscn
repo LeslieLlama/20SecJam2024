@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdrhtw8i0jxxp"]
+
+[ext_resource type="Script" path="res://camera_movement.gd" id="1_j8mr0"]
+[ext_resource type="Script" path="res://shop_scene.gd" id="1_rdwyc"]
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Clock.tscn" id="2_78t57"]
+[ext_resource type="PackedScene" uid="uid://c532eyni0s47u" path="res://HUD.tscn" id="2_i3yuw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d10h0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c81qi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
+material = SubResource("StandardMaterial3D_c81qi")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_rdwyc")
+
+[node name="HUD" parent="." instance=ExtResource("2_i3yuw")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4.01889, 0)
+script = ExtResource("1_j8mr0")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(12.8364, 0, 0, 0, 12.8364, 0, 0, 0, 12.8364, 0, 0, 0)
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../Camera3D")
+
+[node name="Cube1" parent="." instance=ExtResource("2_78t57")]
+
+[node name="Cube2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 1.01523, 1.85048)
+mesh = SubResource("BoxMesh_x27t2")
+
+[node name="Cube3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 0.250489, -2.38893)
+mesh = SubResource("BoxMesh_x27t2")
+
+[node name="Cube4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 7.22759, -10.2593, 0.250489, -0.170988)
+mesh = SubResource("BoxMesh_x27t2")
+
+[node name="Cube5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.81053, 0.222032, -3.12579, -0.48922, 1.57036, 3.49362, 0.982158, 1.19151, -4.02197, -1.10203, 0.250489, 9.40131)
+mesh = SubResource("BoxMesh_x27t2")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.812903, 0.457099, -0.3609, 0.0146064, 0.603482, 0.797242, 0.582216, -0.653352, 0.483896, 0, 8.11136, 0)
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

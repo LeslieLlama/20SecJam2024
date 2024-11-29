@@ -1,0 +1,52 @@
+extends Control
+
+enum GameState {IDLE, PLAY_GAME}
+var CurrentGameState = GameState.IDLE
+var healthSprites: Array[Node] = []
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	healthSprites = [$Health1,$Health2,$Health3]
+	Signals.GameStart.connect(_GameStart)
+	Signals.GameEnd.connect(_GameEnd)
+	Signals.TakeDamage.connect(_TakeDamage)
+	$GameOverMessage.visible = false
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	if CurrentGameState == GameState.IDLE:
+		$TimeRemainingLabel.text = str("Fastest Time: 11.11 seconds")
+	if CurrentGameState == GameState.PLAY_GAME:
+		$TimeRemainingLabel.text = str(Globals.time_remaining," Seconds")
+
+
+
+func _on_start_game_button_up() -> void:
+	Signals.emit_signal("GameStart")
+	$StartGame.visible = false
+	CurrentGameState = GameState.PLAY_GAME
+	
+func _GameStart():
+	$Title.visible = false
+	$Health1.visible = true
+	$Health2.visible = true
+	$Health3.visible = true
+	Globals.health = 3
+	
+func _GameEnd():
+	_ResetGame()
+	
+func _ResetGame():
+	$GameOverMessage.visible = true
+	await get_tree().create_timer(2.0).timeout
+	CurrentGameState = GameState.IDLE
+	$GameOverMessage.visible = false
+	$StartGame.visible = true
+	await get_tree().create_timer(0.8).timeout
+	$Title.visible = true
+	
+func _TakeDamage():
+	healthSprites[Globals.health - 1].visible = false
+	
+	
