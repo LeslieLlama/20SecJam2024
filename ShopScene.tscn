@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=27 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://shop_scene.gd" id="1_rdwyc"]
 [ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Clock.tscn" id="2_78t57"]
 [ext_resource type="PackedScene" uid="uid://c532eyni0s47u" path="res://HUD.tscn" id="2_i3yuw"]
+[ext_resource type="ArrayMesh" uid="uid://bwehrup5tcha2" path="res://Gnome_Model.obj" id="5_325ea"]
+[ext_resource type="Texture2D" uid="uid://clpe146xh13wn" path="res://GnomeTexture.png" id="6_e8sx6"]
+[ext_resource type="ArrayMesh" uid="uid://d0v48bbcf3k5a" path="res://Clock._Model.obj" id="7_5u7g5"]
+[ext_resource type="Texture2D" uid="uid://dsoxnr31jh27r" path="res://WhiteClockTexture.png" id="8_2r1bs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d10h0"]
 
@@ -11,6 +15,51 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
 material = SubResource("StandardMaterial3D_c81qi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n61pv"]
+albedo_texture = ExtResource("6_e8sx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yovgf"]
+albedo_texture = ExtResource("6_e8sx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iayme"]
+albedo_texture = ExtResource("6_e8sx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32qgg"]
+albedo_texture = ExtResource("6_e8sx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjjwn"]
+albedo_texture = ExtResource("6_e8sx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h05p"]
+albedo_texture = ExtResource("6_e8sx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it3mn"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5auq1"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxdus"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dphb"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwe1p"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyid1"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f77wg"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px31n"]
+albedo_texture = ExtResource("8_2r1bs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ie6st"]
+albedo_texture = ExtResource("8_2r1bs")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_rdwyc")
@@ -52,5 +101,28 @@ transform = Transform3D(0.812903, 0.457099, -0.3609, 0.0146064, 0.603482, 0.7972
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="GnomeModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22126, 0, 1.4224)
+mesh = ExtResource("5_325ea")
+surface_material_override/0 = SubResource("StandardMaterial3D_n61pv")
+surface_material_override/1 = SubResource("StandardMaterial3D_yovgf")
+surface_material_override/2 = SubResource("StandardMaterial3D_iayme")
+surface_material_override/3 = SubResource("StandardMaterial3D_32qgg")
+surface_material_override/4 = SubResource("StandardMaterial3D_hjjwn")
+surface_material_override/5 = SubResource("StandardMaterial3D_2h05p")
+
+[node name="Clock_Model" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.814561, 0, -0.580078, 0, 1, 0, 0.580078, 0, -0.814561, -1.73236, 0, 3.45205)
+mesh = ExtResource("7_5u7g5")
+surface_material_override/0 = SubResource("StandardMaterial3D_it3mn")
+surface_material_override/1 = SubResource("StandardMaterial3D_5auq1")
+surface_material_override/2 = SubResource("StandardMaterial3D_rxdus")
+surface_material_override/3 = SubResource("StandardMaterial3D_5dphb")
+surface_material_override/4 = SubResource("StandardMaterial3D_uwe1p")
+surface_material_override/5 = SubResource("StandardMaterial3D_nyid1")
+surface_material_override/6 = SubResource("StandardMaterial3D_f77wg")
+surface_material_override/7 = SubResource("StandardMaterial3D_px31n")
+surface_material_override/8 = SubResource("StandardMaterial3D_ie6st")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
