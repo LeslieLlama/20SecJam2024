@@ -39,6 +39,20 @@ scale = Vector2(3.4211, 3.42381)
 theme_override_font_sizes/font_size = 30
 text = "GAME OVER"
 
+[node name="GameWonMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -595.0
+offset_top = 189.0
+offset_right = -212.0
+offset_bottom = 231.0
+grow_horizontal = 2
+scale = Vector2(3.4211, 3.42381)
+theme_override_font_sizes/font_size = 30
+text = "FOUND THE GNOME!!!!!!!!!"
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5

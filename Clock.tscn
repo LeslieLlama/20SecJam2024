@@ -1,23 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc1obhce5w5rx"]
+[gd_scene load_steps=8 format=3 uid="uid://bc1obhce5w5rx"]
 
 [ext_resource type="Script" path="res://clock_object.gd" id="1_2e8h2"]
+[ext_resource type="Texture2D" uid="uid://mfx51f3dydgl" path="res://Sprites/HoursHandDefault.jpeg" id="2_meemi"]
+[ext_resource type="Texture2D" uid="uid://cdxffuukd7m4u" path="res://Sprites/MinutesHandDefault.jpeg" id="3_gqm77"]
+[ext_resource type="ArrayMesh" uid="uid://bwehrup5tcha2" path="res://Gnome_Model.obj" id="4_5fk7a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c81qi"]
+resource_local_to_scene = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
 material = SubResource("StandardMaterial3D_c81qi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy6n8"]
 
-[node name="Cube1" type="MeshInstance3D"]
-transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 0, 1.86937, -9.60693)
-mesh = SubResource("BoxMesh_x27t2")
+[node name="Clock" type="Node3D"]
 script = ExtResource("1_2e8h2")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Moveables" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="ClockModel" type="MeshInstance3D" parent="Moveables"]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 0, 1.869, 0)
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="Moveables/ClockModel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Moveables/ClockModel/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_cy6n8")
 
-[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[node name="TestLabel" type="Label3D" parent="Moveables"]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 2.90988, 1.08392)
+text = "3:00"
+
+[node name="HoursHand" type="Sprite3D" parent="Moveables"]
+transform = Transform3D(0.315857, 0, 0, 0, 0.315857, 0, 0, 0, 0.315857, 0.0280791, 1.31875, 1.11411)
+offset = Vector2(0, 118.175)
+texture = ExtResource("2_meemi")
+
+[node name="MinutesHand" type="Sprite3D" parent="Moveables"]
+transform = Transform3D(0.315857, 0, 0, 0, 0.315857, 0, 0, 0, 0.315857, 0.0315825, 1.49938, 1.0626)
+offset = Vector2(0, 118.97)
+texture = ExtResource("3_gqm77")
+
+[node name="GnomeModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, -0.303937, -0.102783, -1.9332)
+mesh = ExtResource("4_5fk7a")
+
+[connection signal="input_event" from="Moveables/ClockModel/Area3D" to="." method="_on_area_3d_input_event"]

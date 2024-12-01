@@ -1,8 +1,12 @@
-extends MeshInstance3D
-
+extends Node3D
+var currentTime : float = 0
+var is_gnomed : bool = false
+var at_rest_position : Vector3 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	at_rest_position = $Moveables.position
+	$GnomeModel.visible = false
 	pass
 
 
@@ -11,13 +15,27 @@ func _process(delta: float) -> void:
 	pass
 	
 func _check_gnome():
-	self.get_active_material(0).albedo_color = Color("fa7997")
-	await get_tree().create_timer(1.0).timeout
-	self.get_active_material(0).albedo_color = Color("ffffff")
-	Signals.emit_signal("TakeDamage")
+	var tween = get_tree().create_tween()
+	tween.tween_property($Moveables, "position", Vector3(0,5,0), 1).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Moveables, "position", at_rest_position, 1).set_trans(Tween.TRANS_SINE)
+	if is_gnomed == false:
+		Signals.emit_signal("TakeDamage")
+	else:
+		Signals.emit_signal("GameWon")
 	
+func _set_clock():
+	var hour = floor(Globals.clock_time)
+	var minute : float = Globals.clock_time - hour
+	$Moveables/TestLabel.text = str(hour,":",(minute*100))
 	
-
+func _is_gnomed():
+	is_gnomed = true
+	$GnomeModel.visible = true
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	var hour = random.randi_range(0, 12)
+	var minute : float = random.randi_range(0, 60)
+	$Moveables/TestLabel.text = str(hour,":",minute)
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
