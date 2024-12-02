@@ -27,6 +27,8 @@ func _set_clock():
 	var hour = floor(Globals.clock_time)
 	var minute : float = Globals.clock_time - hour
 	$Moveables/TestLabel.text = str(hour,":",(minute*100))
+	$Moveables/HoursHand.rotation_degrees.z = hour * 30
+	$Moveables/MinutesHand.rotation_degrees.z = minute * 600
 	
 func _is_gnomed():
 	is_gnomed = true
@@ -36,6 +38,8 @@ func _is_gnomed():
 	var hour = random.randi_range(0, 12)
 	var minute : float = random.randi_range(0, 60)
 	$Moveables/TestLabel.text = str(hour,":",minute)
+	$Moveables/HoursHand.rotation_degrees.z = hour * 30
+	$Moveables/MinutesHand.rotation_degrees.z = minute * 6
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:

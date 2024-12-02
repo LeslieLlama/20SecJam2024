@@ -12,6 +12,7 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_c81qi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy6n8"]
+size = Vector3(2.12378, 2.2749, 1)
 
 [node name="Clock" type="Node3D"]
 script = ExtResource("1_2e8h2")
@@ -34,13 +35,13 @@ transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074
 text = "3:00"
 
 [node name="HoursHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(0.315857, 0, 0, 0, 0.315857, 0, 0, 0, 0.315857, 0.0280791, 1.31875, 1.11411)
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0280791, 1.31875, 1.11411)
 offset = Vector2(0, 118.175)
 texture = ExtResource("2_meemi")
 
 [node name="MinutesHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(0.315857, 0, 0, 0, 0.315857, 0, 0, 0, 0.315857, 0.0315825, 1.49938, 1.0626)
-offset = Vector2(0, 118.97)
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0285275, 1.31957, 1.0626)
+offset = Vector2(0, 177.405)
 texture = ExtResource("3_gqm77")
 
 [node name="GnomeModel" type="MeshInstance3D" parent="."]

@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=9 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://shop_scene.gd" id="1_rdwyc"]
 [ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Clock.tscn" id="2_78t57"]
 [ext_resource type="PackedScene" uid="uid://c532eyni0s47u" path="res://HUD.tscn" id="2_i3yuw"]
-[ext_resource type="ArrayMesh" uid="uid://d0v48bbcf3k5a" path="res://Clock._Model.obj" id="7_5u7g5"]
-[ext_resource type="Texture2D" uid="uid://dsoxnr31jh27r" path="res://WhiteClockTexture.png" id="8_2r1bs"]
+[ext_resource type="PackedScene" uid="uid://crc7gn1b8slty" path="res://AlarmClock.tscn" id="5_blq43"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d10h0"]
 
@@ -14,36 +13,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
 material = SubResource("StandardMaterial3D_c81qi")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it3mn"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5auq1"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxdus"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dphb"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwe1p"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyid1"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f77wg"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px31n"]
-albedo_texture = ExtResource("8_2r1bs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ie6st"]
-albedo_texture = ExtResource("8_2r1bs")
-
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
-Clocks = [NodePath("Clock1"), NodePath("Clock2"), NodePath("Clock3")]
+Clocks = [NodePath("Clock1"), NodePath("Clock2"), NodePath("Clock3"), NodePath("Clock_Alarm1")]
 
 [node name="HUD" parent="." instance=ExtResource("2_i3yuw")]
 
@@ -55,6 +27,26 @@ script = ExtResource("1_j8mr0")
 
 [node name="Floor" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(12.8364, 0, 0, 0, 12.8364, 0, 0, 0, 12.8364, 0, 0, 0)
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallNorth" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(12.8364, 0, 0, 0, -5.61097e-07, -12.8364, 0, 12.8364, -5.61097e-07, 0, 9.94811, -13.1318)
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallSouth" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-12.8364, -1.12219e-06, 4.90526e-14, 0, -5.61097e-07, -12.8364, 1.12219e-06, -12.8364, 5.61097e-07, 0, 9.94811, 12.6051)
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallEast" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-5.88486e-07, -12.8364, 5.61097e-07, 0, -5.61097e-07, -12.8364, 13.463, -5.61097e-07, 2.45263e-14, 12.8552, 9.94811, -0.506266)
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallEast2" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-5.88486e-07, 12.8364, -5.61097e-07, 0, -5.61097e-07, -12.8364, -13.463, -5.61097e-07, 2.45263e-14, -12.5915, 9.94811, -0.506266)
 mesh = SubResource("PlaneMesh_d10h0")
 skeleton = NodePath("../../Camera3D")
 
@@ -74,9 +66,18 @@ mesh = SubResource("BoxMesh_x27t2")
 skeleton = NodePath("../..")
 
 [node name="Cube5" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(-1.81053, 0.222032, -3.12579, -0.48922, 1.57036, 3.49362, 0.982158, 1.19151, -4.02197, -1.10203, 0.250489, 9.40131)
+transform = Transform3D(-1.81053, 0.222032, -3.12579, -0.48922, 1.57036, 3.49362, 0.982158, 1.19151, -4.02197, -7.15033, 0.250489, 9.40131)
 mesh = SubResource("BoxMesh_x27t2")
 skeleton = NodePath("../..")
+
+[node name="Door" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(4.71923, 0, 0, 0, 7.70375, 0, 0, 0, 1.99303, -0.161953, 3.63984, 12.5089)
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="Enviroment/Door"]
+transform = Transform3D(-0.997671, 0, -0.0682069, 0, 1, 0, 0.0682069, 0, -0.997671, 0, 0, -0.585355)
+text = "Door"
 
 [node name="Clock1" parent="." instance=ExtResource("2_78t57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.41086)
@@ -87,26 +88,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25668, 0, -9.41086)
 [node name="Clock3" parent="." instance=ExtResource("2_78t57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09819, 0, -9.41086)
 
+[node name="Clock_Alarm1" parent="." instance=ExtResource("5_blq43")]
+transform = Transform3D(-0.0880251, 0, 0.996118, 0, 1, 0, -0.996118, 0, -0.0880251, -10.2757, 2.12617, -1.94593)
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8086, 0)
+light_color = Color(1, 0.74902, 0.486275, 1)
+light_energy = 11.224
+light_size = 0.276
+shadow_enabled = true
+omni_range = 17.55
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.812903, 0.457099, -0.3609, 0.0146064, 0.603482, 0.797242, 0.582216, -0.653352, 0.483896, 0, 8.11136, 0)
+visible = false
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
-
-[node name="Clock_Model" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.147533, 0, -0.989057, 0, 1, 0, 0.989057, 0, -0.147533, -10.2584, 2.1095, 1.12027)
-mesh = ExtResource("7_5u7g5")
-surface_material_override/0 = SubResource("StandardMaterial3D_it3mn")
-surface_material_override/1 = SubResource("StandardMaterial3D_5auq1")
-surface_material_override/2 = SubResource("StandardMaterial3D_rxdus")
-surface_material_override/3 = SubResource("StandardMaterial3D_5dphb")
-surface_material_override/4 = SubResource("StandardMaterial3D_uwe1p")
-surface_material_override/5 = SubResource("StandardMaterial3D_nyid1")
-surface_material_override/6 = SubResource("StandardMaterial3D_f77wg")
-surface_material_override/7 = SubResource("StandardMaterial3D_px31n")
-surface_material_override/8 = SubResource("StandardMaterial3D_ie6st")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
