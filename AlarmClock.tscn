@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crc7gn1b8slty"]
+[gd_scene load_steps=6 format=3 uid="uid://crc7gn1b8slty"]
 
 [ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Clock.tscn" id="1_phx8o"]
 [ext_resource type="Texture2D" uid="uid://dsoxnr31jh27r" path="res://WhiteClockTexture.png" id="2_6ugqy"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lnoo"]
 albedo_texture = ExtResource("2_6ugqy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdxnd"]
+size = Vector3(1.73676, 2.23851, 1)
 
 [node name="Clock" instance=ExtResource("1_phx8o")]
 
@@ -15,10 +18,8 @@ material_override = SubResource("StandardMaterial3D_3lnoo")
 mesh = ExtResource("3_m1s5m")
 
 [node name="CollisionShape3D" parent="Moveables/ClockModel/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0.00671387, 1.25805, -6.66134e-16)
-
-[node name="TestLabel" parent="Moveables" index="1"]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0.0264473, 1.18384, -2.22045e-16)
+shape = SubResource("BoxShape3D_wdxnd")
 
 [node name="HoursHand" parent="Moveables" index="2"]
 transform = Transform3D(-0.205611, 0, -1.79751e-08, 0, 0.205611, 0, 1.79751e-08, 0, -0.205611, -0.000426829, 1.02786, 0.255521)

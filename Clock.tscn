@@ -12,7 +12,7 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_c81qi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy6n8"]
-size = Vector3(2.12378, 2.2749, 1)
+size = Vector3(1.10493, 1.0546, 1)
 
 [node name="Clock" type="Node3D"]
 script = ExtResource("1_2e8h2")
@@ -27,11 +27,12 @@ skeleton = NodePath("../..")
 [node name="Area3D" type="Area3D" parent="Moveables/ClockModel"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Moveables/ClockModel/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, -0.00792693, -0.0103911, 0)
 shape = SubResource("BoxShape3D_cy6n8")
 
 [node name="TestLabel" type="Label3D" parent="Moveables"]
 transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 2.90988, 1.08392)
+visible = false
 text = "3:00"
 
 [node name="HoursHand" type="Sprite3D" parent="Moveables"]
