@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 
 func _GameStart():
 	$GameTimer.start()
-	print("game started")
 	_setClockTime()
 	_PickClock()
 	
@@ -23,7 +22,6 @@ func _PickClock():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	var val = (random.randi_range(0, Clocks.size()))
-	print(val-1)
 	var gnome_clock = Clocks[val-1]
 	gnome_clock._is_gnomed()
 	
@@ -41,8 +39,8 @@ func _TakeDamage():
 	if Globals.health > 0:
 		Globals.health -= 1
 	if Globals.health == 0:
-		Signals.emit_signal("GameEnd")
+		Signals.emit_signal("GameEnd", false)
 
 
 func _on_game_timer_timeout() -> void:
-	Signals.emit_signal("GameEnd")
+	Signals.emit_signal("GameEnd", false)

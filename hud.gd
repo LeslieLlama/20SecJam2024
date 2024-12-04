@@ -10,7 +10,6 @@ func _ready() -> void:
 	Signals.GameStart.connect(_GameStart)
 	Signals.GameEnd.connect(_GameEnd)
 	Signals.TakeDamage.connect(_TakeDamage)
-	Signals.GameWon.connect(_GameWon)
 	$GameOverMessage.visible = false
 	$GameWonMessage.visible = false
 
@@ -36,19 +35,20 @@ func _GameStart():
 	$Health3.visible = true
 	Globals.health = 3
 	
-func _GameEnd():
-	$GameOverMessage.visible = true
-	await get_tree().create_timer(2.0).timeout
-	CurrentGameState = GameState.IDLE
-	$GameOverMessage.visible = false
+func _GameEnd(GameWon : bool):
+	if(GameWon == false):
+		$GameOverMessage.visible = true
+		await get_tree().create_timer(2.0).timeout
+		CurrentGameState = GameState.IDLE
+		$GameOverMessage.visible = false
+		_ResetGame()
+	else: 
+		$GameWonMessage.visible = true
+		await get_tree().create_timer(4.0).timeout
+		CurrentGameState = GameState.IDLE
+		$GameWonMessage.visible = false
 	_ResetGame()
 	
-func _GameWon():
-	$GameWonMessage.visible = true
-	await get_tree().create_timer(4.0).timeout
-	CurrentGameState = GameState.IDLE
-	$GameWonMessage.visible = false
-	_ResetGame()
 	
 func _ResetGame():
 	

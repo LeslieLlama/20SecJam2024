@@ -4,15 +4,16 @@ var idleRotationSpeed = 3
 
 enum GameState {IDLE, PLAY_GAME}
 var CurrentGameState = GameState.IDLE
+var startingRotationValues: Array[int] = [0, 90, 180, 270]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.GameStart.connect(_StartGame)
 	Signals.GameEnd.connect(_EndGame)
 
 func _StartGame():
-	rotation_pos.y = 0
+	rotation_pos.y = startingRotationValues.pick_random()
 	CurrentGameState = GameState.PLAY_GAME
-func _EndGame():
+func _EndGame(GameOutcome : bool):
 	CurrentGameState = GameState.IDLE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
