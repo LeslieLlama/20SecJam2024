@@ -2,17 +2,28 @@ extends Node3D
 var currentTime : float = 0
 var is_gnomed : bool = false
 var at_rest_position : Vector3 
+var secondsHandSpeed : float = 6
+var secondsHandRunning : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	at_rest_position = $Moveables.position
 	$GnomeModel.visible = false
+	Signals.GameStart.connect(_GameStart)
+	Signals.GameEnd.connect(_GameEnd)
 	pass
 
+func _GameStart():
+	secondsHandRunning = true
+	
+func _GameEnd():
+	secondsHandRunning = false
+	$Moveables/SecondsHand.rotation_degrees.z = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if secondsHandRunning == true:
+		$Moveables/SecondsHand.rotation_degrees.z += secondsHandSpeed*delta
 	
 func _check_gnome():
 	var tween = get_tree().create_tween()
