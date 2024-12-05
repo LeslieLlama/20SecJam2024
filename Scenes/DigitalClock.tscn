@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://sh6u5w84by0t"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_0yl8x"]
+[ext_resource type="Script" path="res://Scripts/clock_object_digital.gd" id="2_kqoff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61rtl"]
+albedo_color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_peqyg"]
+material = SubResource("StandardMaterial3D_61rtl")
+
+[node name="Clock" instance=ExtResource("1_0yl8x")]
+script = ExtResource("2_kqoff")
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(2.04854, 0, 0, 0, 0.79079, 0, 0, 0, 1.41716, 0, 1.869, 0)
+mesh = SubResource("BoxMesh_peqyg")
+
+[node name="DigitalReadout" parent="Moveables" index="1"]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 1.9198, 0.750708)
+visible = true
+modulate = Color(1, 0.294118, 0.215686, 1)
+text = "3:00:00"
+
+[node name="HoursHand" parent="Moveables" index="2"]
+visible = false
+
+[node name="MinutesHand" parent="Moveables" index="3"]
+visible = false
+
+[node name="SecondsHand" parent="Moveables" index="4"]
+visible = false
+
+[node name="GnomeModel" parent="." index="1"]
+transform = Transform3D(0.00498692, 0.348002, 0, -0.348002, 0.00498692, 0, 0, 0, 0.348038, -0.804648, 1.56854, -1.9332)

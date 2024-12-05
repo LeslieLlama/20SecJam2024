@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=26 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://Scripts/shop_scene.gd" id="1_rdwyc"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dkdl7sql70e1g" path="res://Textures/DoorTexture.jpg" id="6_481hs"]
 [ext_resource type="PackedScene" uid="uid://dv4xklrqgnosb" path="res://Scenes/big_red_button.tscn" id="7_cw0bq"]
 [ext_resource type="Texture2D" uid="uid://cbky7eowpgplj" path="res://Textures/HangingSignTexture.png" id="8_0ln3d"]
+[ext_resource type="Texture2D" uid="uid://ydlvb2240wrr" path="res://Textures/SundialTexture.png" id="9_ql80y"]
+[ext_resource type="PackedScene" uid="uid://sh6u5w84by0t" path="res://Scenes/DigitalClock.tscn" id="11_pvbqw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvm2f"]
 albedo_texture = ExtResource("4_dwyan")
@@ -51,9 +53,16 @@ uv1_scale = Vector3(3, 2.005, 2.005)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hvvdj"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_argnx"]
+albedo_texture = ExtResource("9_ql80y")
+uv1_scale = Vector3(1.885, 1.885, 1.885)
+uv1_offset = Vector3(-0.91, -0.925, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_et0j3"]
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
-Clocks = [NodePath("Clock1"), NodePath("Clock2"), NodePath("Clock3"), NodePath("Clock_Alarm1")]
+Clocks = [NodePath("Clock1"), NodePath("Clock2"), NodePath("Clock3"), NodePath("Clock_Alarm1"), NodePath("Clock")]
 
 [node name="HUD" parent="." instance=ExtResource("2_i3yuw")]
 
@@ -126,13 +135,13 @@ text = "Door"
 
 [node name="BigRedButton" parent="Enviroment" instance=ExtResource("7_cw0bq")]
 
-[node name="HangingSign" type="MeshInstance3D" parent="Enviroment"]
+[node name="HangingSign1" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(3.40385, 0, 0, 0, 1.80249, 0, 0, 0, 0.390724, -9.0936, 5.67874, 12.3944)
 material_override = SubResource("StandardMaterial3D_rqa66")
 mesh = SubResource("BoxMesh_hvvdj")
 skeleton = NodePath("../..")
 
-[node name="Label3D" type="Label3D" parent="Enviroment/HangingSign"]
+[node name="Label3D" type="Label3D" parent="Enviroment/HangingSign1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.777073)
 modulate = Color(0, 0, 0, 1)
 text = "The
@@ -141,6 +150,28 @@ Button that
 kills you"
 font_size = 24
 outline_size = 0
+
+[node name="HangingSign2" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-1.48787e-07, 0, 0.390724, 0, 1.80249, 0, -3.40385, 0, -1.70791e-08, 12.6833, 8.44823, -0.385951)
+material_override = SubResource("StandardMaterial3D_rqa66")
+mesh = SubResource("BoxMesh_hvvdj")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="Enviroment/HangingSign2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.777073)
+modulate = Color(0, 0, 0, 1)
+text = "Magic Sundial
+(warning : 
+attracts 
+gnomes)"
+font_size = 24
+outline_size = 0
+
+[node name="Sundial" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.48787e-07, 0.057944, -1.47016e-07, 0, -2.53281e-09, -3.36334, -3.40385, -2.53281e-09, 6.42629e-15, 12.5165, 5.41666, -0.385951)
+material_override = SubResource("StandardMaterial3D_argnx")
+mesh = SubResource("CylinderMesh_et0j3")
+skeleton = NodePath("../Enviroment/HangingSign2")
 
 [node name="Clock1" parent="." instance=ExtResource("2_78t57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.41086)
@@ -171,5 +202,8 @@ visible = false
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="Clock" parent="." instance=ExtResource("11_pvbqw")]
+transform = Transform3D(-0.0595677, 0, 0.998224, 0, 1, 0, -0.998224, 0, -0.0595677, -10.1311, 0.650813, 2.60866)
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

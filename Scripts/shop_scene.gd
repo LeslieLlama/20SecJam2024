@@ -28,10 +28,11 @@ func _PickClock():
 func _setClockTime():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	var hour = random.randi_range(0, 12)
+	var hour = random.randi_range(1, 12)
 	var minute : float = random.randi_range(0, 60)
 	minute /= 100
 	Globals.clock_time = hour+minute
+	print(Globals.clock_time)
 	for x in Clocks:
 		x._set_clock()
 	

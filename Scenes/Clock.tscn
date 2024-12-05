@@ -35,7 +35,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, -0.00792693, -0.0103911, 0)
 shape = SubResource("BoxShape3D_cy6n8")
 
-[node name="TestLabel" type="Label3D" parent="Moveables"]
+[node name="DigitalReadout" type="Label3D" parent="Moveables"]
 transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 2.90988, 1.08392)
 visible = false
 text = "3:00"

@@ -13,7 +13,7 @@ func _ready() -> void:
 	$GnomeModel.visible = false
 	Signals.GameStart.connect(_GameStart)
 	Signals.GameEnd.connect(_GameEnd)
-	
+	base_Y_Rotation = $Moveables.rotation_degrees.z
 	pass
 
 func _GameStart():
@@ -22,10 +22,11 @@ func _GameStart():
 	secondsHandRunning = true
 	
 func _GameEnd(GameWon:bool):
-	is_gnomed = false
 	secondsHandRunning = false
 	$Moveables/SecondsHand.rotation_degrees.z = 0
+	is_gnomed = false
 	$Moveables.rotation_degrees.y = base_Y_Rotation
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,7 +45,7 @@ func _check_gnome():
 func _set_clock():
 	var hour = floor(Globals.clock_time)
 	var minute : float = Globals.clock_time - hour
-	$Moveables/DigitalReadout.text = str(hour,":",(minute*100))
+	$Moveables/DigitalReadout.text = str(hour,":",minute*100)
 	$Moveables/HoursHand.rotation_degrees.z = hour * 30
 	$Moveables/MinutesHand.rotation_degrees.z = minute * 600
 	
@@ -53,17 +54,15 @@ func _is_gnomed():
 	$GnomeModel.visible = true
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	var behavior = random.randi_range(0,2)
+	var behavior = random.randi_range(0,1)
 	match behavior:
 		0: #Clock Time is Wrong Behavior
 			var hour = random.randi_range(0, 12)
 			var minute : float = random.randi_range(0, 60)
-			$Moveables/DigitalReadout.text = str(hour * 30,":",minute * 6)
+			$Moveables/DigitalReadout.text = str(hour,":",int(minute))
 			$Moveables/HoursHand.rotation_degrees.z = hour * 30
 			$Moveables/MinutesHand.rotation_degrees.z = minute * 6
-		1: #Seconds hand is running backwards behavior
-			secondsHandSpeed *= -1
-		2: 
+		1: #Clock is Turned backwards
 			$Moveables.rotation_degrees.y += 180
 	
 	
