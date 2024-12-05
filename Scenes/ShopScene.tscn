@@ -1,0 +1,175 @@
+[gd_scene load_steps=22 format=3 uid="uid://cdrhtw8i0jxxp"]
+
+[ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_j8mr0"]
+[ext_resource type="Script" path="res://Scripts/shop_scene.gd" id="1_rdwyc"]
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="2_78t57"]
+[ext_resource type="PackedScene" uid="uid://c532eyni0s47u" path="res://Scenes/HUD.tscn" id="2_i3yuw"]
+[ext_resource type="Texture2D" uid="uid://bwltopu5deprm" path="res://Textures/FloorTexture.jpg" id="4_dwyan"]
+[ext_resource type="PackedScene" uid="uid://crc7gn1b8slty" path="res://Scenes/AlarmClock.tscn" id="5_blq43"]
+[ext_resource type="Texture2D" uid="uid://d3y8851klop34" path="res://Textures/WallTexture.jpg" id="5_q8qdp"]
+[ext_resource type="Texture2D" uid="uid://dkdl7sql70e1g" path="res://Textures/DoorTexture.jpg" id="6_481hs"]
+[ext_resource type="PackedScene" uid="uid://dv4xklrqgnosb" path="res://Scenes/big_red_button.tscn" id="7_cw0bq"]
+[ext_resource type="Texture2D" uid="uid://cbky7eowpgplj" path="res://Textures/HangingSignTexture.png" id="8_0ln3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvm2f"]
+albedo_texture = ExtResource("4_dwyan")
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(2.51, 0.22, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d10h0"]
+lightmap_size_hint = Vector2i(12, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w485j"]
+albedo_texture = ExtResource("5_q8qdp")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbgtk"]
+albedo_texture = ExtResource("5_q8qdp")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84oxc"]
+albedo_texture = ExtResource("5_q8qdp")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3yph"]
+albedo_texture = ExtResource("5_q8qdp")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c81qi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
+material = SubResource("StandardMaterial3D_c81qi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yhas"]
+albedo_texture = ExtResource("6_481hs")
+uv1_scale = Vector3(1.8, 1.625, 1.8)
+uv1_offset = Vector3(0, 0.1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqa66"]
+albedo_texture = ExtResource("8_0ln3d")
+uv1_scale = Vector3(3, 2.005, 2.005)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hvvdj"]
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
+script = ExtResource("1_rdwyc")
+Clocks = [NodePath("Clock1"), NodePath("Clock2"), NodePath("Clock3"), NodePath("Clock_Alarm1")]
+
+[node name="HUD" parent="." instance=ExtResource("2_i3yuw")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4.01889, 0)
+script = ExtResource("1_j8mr0")
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(12.8364, 0, 0, 0, 12.8364, 0, 0, 0, 12.8364, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hvm2f")
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallNorth" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(12.8364, 0, 0, 0, -5.61097e-07, -12.8364, 0, 12.8364, -5.61097e-07, 0, 9.94811, -13.1318)
+material_override = SubResource("StandardMaterial3D_w485j")
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallSouth" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-12.8364, -1.12219e-06, 4.90526e-14, 0, -5.61097e-07, -12.8364, 1.12219e-06, -12.8364, 5.61097e-07, 0, 9.94811, 12.6051)
+material_override = SubResource("StandardMaterial3D_kbgtk")
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallEast" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-5.88486e-07, -12.8364, 5.61097e-07, 0, -5.61097e-07, -12.8364, 13.463, -5.61097e-07, 2.45263e-14, 12.8552, 9.94811, -0.506266)
+material_override = SubResource("StandardMaterial3D_84oxc")
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="WallEast2" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-5.88486e-07, 12.8364, -5.61097e-07, 0, -5.61097e-07, -12.8364, -13.463, -5.61097e-07, 2.45263e-14, -12.5915, 9.94811, -0.506266)
+material_override = SubResource("StandardMaterial3D_e3yph")
+mesh = SubResource("PlaneMesh_d10h0")
+skeleton = NodePath("../../Camera3D")
+
+[node name="Cube2" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 1.01523, 1.85048)
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Cube3" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 0.250489, -2.38893)
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Cube4" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 7.22759, -10.2593, 0.250489, -0.170988)
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Cube5" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(2.11707, 0, 0, 0, -8.67098e-08, -6.17675, 0, 1.98369, -2.69994e-07, -9.22738, 0.302535, 10.0681)
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Door" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(4.71923, 0, 0, 0, 7.70375, 0, 0, 0, 1.99303, -0.16554, 3.63984, 12.5081)
+material_override = SubResource("StandardMaterial3D_4yhas")
+mesh = SubResource("BoxMesh_x27t2")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="Enviroment/Door"]
+transform = Transform3D(-0.997671, 0, -0.0682069, 0, 1, 0, 0.0682069, 0, -0.997671, 0, 0, -0.585355)
+visible = false
+text = "Door"
+
+[node name="BigRedButton" parent="Enviroment" instance=ExtResource("7_cw0bq")]
+
+[node name="HangingSign" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(3.40385, 0, 0, 0, 1.80249, 0, 0, 0, 0.390724, -9.0936, 5.67874, 12.3944)
+material_override = SubResource("StandardMaterial3D_rqa66")
+mesh = SubResource("BoxMesh_hvvdj")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="Enviroment/HangingSign"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.777073)
+modulate = Color(0, 0, 0, 1)
+text = "The
+World Famous
+Button that
+kills you"
+font_size = 24
+outline_size = 0
+
+[node name="Clock1" parent="." instance=ExtResource("2_78t57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.41086)
+
+[node name="Clock2" parent="." instance=ExtResource("2_78t57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25668, 0, -9.41086)
+
+[node name="Clock3" parent="." instance=ExtResource("2_78t57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09819, 0, -9.41086)
+
+[node name="Clock_Alarm1" parent="." instance=ExtResource("5_blq43")]
+transform = Transform3D(-0.0880251, 0, 0.996118, 0, 1, 0, -0.996118, 0, -0.0880251, -10.2757, 2.12617, -1.94593)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8086, 0)
+light_color = Color(1, 0.74902, 0.486275, 1)
+light_energy = 11.224
+light_size = 0.276
+shadow_enabled = true
+omni_range = 17.55
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.812903, 0.457099, -0.3609, 0.0146064, 0.603482, 0.797242, 0.582216, -0.653352, 0.483896, 0, 8.11136, 0)
+visible = false
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

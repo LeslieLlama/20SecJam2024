@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv4xklrqgnosb"]
+
+[ext_resource type="Texture2D" uid="uid://brb41nu6wfw8l" path="res://3DModels/export3dcoat__color.tga" id="1_l8ewa"]
+[ext_resource type="ArrayMesh" uid="uid://4bmrfej0q0mh" path="res://3DModels/export3dcoat.obj" id="2_cai31"]
+[ext_resource type="Script" path="res://Scenes/big_red_button.gd" id="3_pqej4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wok6r"]
+albedo_texture = ExtResource("1_l8ewa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hx4t"]
+size = Vector3(153.759, 147.078, 181.1)
+
+[node name="BigRedButton" type="MeshInstance3D"]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, -9.15716, 3.10433, 10.064)
+material_override = SubResource("StandardMaterial3D_wok6r")
+mesh = ExtResource("2_cai31")
+script = ExtResource("3_pqej4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7323, 94.2843, -2.0415)
+shape = SubResource("BoxShape3D_1hx4t")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

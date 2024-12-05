@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="20SecJam2024"
-run/main_scene="res://ShopScene.tscn"
+run/main_scene="res://Scenes/ShopScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://CustomCursor.png"
+config/icon="res://Sprites/CustomCursor.png"
 
 [autoload]
 
@@ -24,7 +24,7 @@ Signals="*res://preload/signals.gd"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-mouse_cursor/custom_image="res://CustomCursor.png"
+mouse_cursor/custom_image="res://Sprites/CustomCursor.png"
 
 [input]
 

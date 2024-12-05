@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bwehrup5tcha2"
+path="res://.godot/imported/Gnome_Model.obj-aa649405d351fe8d2ab2e39d53b34ab5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Gnome_Model.obj-aa649405d351fe8d2ab2e39d53b34ab5.mesh"]
+
+source_file="res://3DModels/Gnome_Model.obj"
+dest_files=["res://.godot/imported/Gnome_Model.obj-aa649405d351fe8d2ab2e39d53b34ab5.mesh", "res://.godot/imported/Gnome_Model.obj-aa649405d351fe8d2ab2e39d53b34ab5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

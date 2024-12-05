@@ -8,3 +8,4 @@ extends Node
 signal GameStart()
 signal GameEnd(GameWon : bool)
 signal TakeDamage()
+signal RedDeath()
