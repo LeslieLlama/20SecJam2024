@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=35 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://Scripts/shop_scene.gd" id="1_rdwyc"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cbky7eowpgplj" path="res://Textures/HangingSignTexture.png" id="8_0ln3d"]
 [ext_resource type="Texture2D" uid="uid://ydlvb2240wrr" path="res://Textures/SundialTexture.png" id="9_ql80y"]
 [ext_resource type="PackedScene" uid="uid://sh6u5w84by0t" path="res://Scenes/DigitalClock.tscn" id="11_pvbqw"]
+[ext_resource type="ArrayMesh" uid="uid://c2oyq3ums6ra0" path="res://3DModels/Grandfather_Clock_Model.obj" id="13_hd8tp"]
+[ext_resource type="Texture2D" uid="uid://dhhqno1h0j1ir" path="res://Textures/GrandfatherClockTexture.png" id="14_cstoe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvm2f"]
 albedo_texture = ExtResource("4_dwyan")
@@ -59,6 +61,27 @@ uv1_scale = Vector3(1.885, 1.885, 1.885)
 uv1_offset = Vector3(-0.91, -0.925, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_et0j3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ls2mj"]
+albedo_texture = ExtResource("14_cstoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ltfw"]
+albedo_texture = ExtResource("14_cstoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pat22"]
+albedo_texture = ExtResource("14_cstoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1bf2"]
+albedo_texture = ExtResource("14_cstoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7tba"]
+albedo_texture = ExtResource("14_cstoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v138q"]
+albedo_texture = ExtResource("14_cstoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0prt"]
+albedo_texture = ExtResource("14_cstoe")
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
@@ -205,5 +228,16 @@ one_shot = true
 
 [node name="Clock" parent="." instance=ExtResource("11_pvbqw")]
 transform = Transform3D(-0.0595677, 0, 0.998224, 0, 1, 0, -0.998224, 0, -0.0595677, -10.1311, 0.650813, 2.60866)
+
+[node name="GrandfatherClockModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24163, -5.4649, 24.1074)
+mesh = ExtResource("13_hd8tp")
+surface_material_override/0 = SubResource("StandardMaterial3D_ls2mj")
+surface_material_override/1 = SubResource("StandardMaterial3D_8ltfw")
+surface_material_override/2 = SubResource("StandardMaterial3D_pat22")
+surface_material_override/3 = SubResource("StandardMaterial3D_a1bf2")
+surface_material_override/4 = SubResource("StandardMaterial3D_b7tba")
+surface_material_override/5 = SubResource("StandardMaterial3D_v138q")
+surface_material_override/6 = SubResource("StandardMaterial3D_s0prt")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

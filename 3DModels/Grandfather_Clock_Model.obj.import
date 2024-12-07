@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c2oyq3ums6ra0"
+path="res://.godot/imported/Grandfather_Clock_Model.obj-a01513325b567806c4c261d8a72a130a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Grandfather_Clock_Model.obj-a01513325b567806c4c261d8a72a130a.mesh"]
+
+source_file="res://3DModels/Grandfather_Clock_Model.obj"
+dest_files=["res://.godot/imported/Grandfather_Clock_Model.obj-a01513325b567806c4c261d8a72a130a.mesh", "res://.godot/imported/Grandfather_Clock_Model.obj-a01513325b567806c4c261d8a72a130a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
