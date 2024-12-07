@@ -85,7 +85,7 @@ albedo_texture = ExtResource("14_cstoe")
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
-Clocks = [NodePath("Clock1"), NodePath("Clock2"), NodePath("Clock3"), NodePath("Clock_Alarm1"), NodePath("Clock")]
+Clocks = [NodePath("Clocks/Clock1"), NodePath("Clocks/Clock2"), NodePath("Clocks/Clock3"), NodePath("Clock_Alarm1"), NodePath("DigitalClock")]
 
 [node name="HUD" parent="." instance=ExtResource("2_i3yuw")]
 
@@ -190,20 +190,22 @@ gnomes)"
 font_size = 24
 outline_size = 0
 
+[node name="Clocks" type="Node3D" parent="."]
+
+[node name="Clock1" parent="Clocks" instance=ExtResource("2_78t57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83549, -12.5773)
+
+[node name="Clock2" parent="Clocks" instance=ExtResource("2_78t57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25668, 2.82068, -12.5206)
+
+[node name="Clock3" parent="Clocks" instance=ExtResource("2_78t57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.098, 2.75798, -12.521)
+
 [node name="Sundial" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.48787e-07, 0.057944, -1.47016e-07, 0, -2.53281e-09, -3.36334, -3.40385, -2.53281e-09, 6.42629e-15, 12.5165, 5.41666, -0.385951)
 material_override = SubResource("StandardMaterial3D_argnx")
 mesh = SubResource("CylinderMesh_et0j3")
 skeleton = NodePath("../Enviroment/HangingSign2")
-
-[node name="Clock1" parent="." instance=ExtResource("2_78t57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.41086)
-
-[node name="Clock2" parent="." instance=ExtResource("2_78t57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25668, 0, -9.41086)
-
-[node name="Clock3" parent="." instance=ExtResource("2_78t57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09819, 0, -9.41086)
 
 [node name="Clock_Alarm1" parent="." instance=ExtResource("5_blq43")]
 transform = Transform3D(-0.0880251, 0, 0.996118, 0, 1, 0, -0.996118, 0, -0.0880251, -10.2757, 2.12617, -1.94593)
@@ -226,7 +228,7 @@ visible = false
 wait_time = 20.0
 one_shot = true
 
-[node name="Clock" parent="." instance=ExtResource("11_pvbqw")]
+[node name="DigitalClock" parent="." instance=ExtResource("11_pvbqw")]
 transform = Transform3D(-0.0595677, 0, 0.998224, 0, 1, 0, -0.998224, 0, -0.0595677, -10.1311, 0.650813, 2.60866)
 
 [node name="GrandfatherClockModel" type="MeshInstance3D" parent="."]

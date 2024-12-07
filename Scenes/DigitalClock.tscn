@@ -9,12 +9,15 @@ albedo_color = Color(0.180005, 0.180005, 0.180005, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_peqyg"]
 material = SubResource("StandardMaterial3D_61rtl")
 
-[node name="Clock" instance=ExtResource("1_0yl8x")]
+[node name="DigitalClock" instance=ExtResource("1_0yl8x")]
 script = ExtResource("2_kqoff")
 
 [node name="ClockModel" parent="Moveables" index="0"]
 transform = Transform3D(2.04854, 0, 0, 0, 0.79079, 0, 0, 0, 1.41716, 0, 1.869, 0)
 mesh = SubResource("BoxMesh_peqyg")
+
+[node name="ClockBack" parent="Moveables/ClockModel" index="0"]
+visible = false
 
 [node name="DigitalReadout" parent="Moveables" index="1"]
 transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 1.9198, 0.750708)

@@ -1,17 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://bc1obhce5w5rx"]
+[gd_scene load_steps=14 format=3 uid="uid://bc1obhce5w5rx"]
 
 [ext_resource type="Script" path="res://Scripts/clock_object.gd" id="1_2e8h2"]
+[ext_resource type="Texture2D" uid="uid://d3y8851klop34" path="res://Textures/WallTexture.jpg" id="2_is5tk"]
 [ext_resource type="Texture2D" uid="uid://mfx51f3dydgl" path="res://Sprites/HoursHandDefault.jpeg" id="2_meemi"]
 [ext_resource type="Texture2D" uid="uid://cdxffuukd7m4u" path="res://Sprites/MinutesHandDefault.jpeg" id="3_gqm77"]
 [ext_resource type="ArrayMesh" uid="uid://bwehrup5tcha2" path="res://3DModels/Gnome_Model.obj" id="4_5fk7a"]
 [ext_resource type="Texture2D" uid="uid://scffks2wotsy" path="res://Sprites/SecondsHandDefault.jpg" id="4_o2spu"]
 [ext_resource type="Texture2D" uid="uid://clpe146xh13wn" path="res://Textures/GnomeTexture.png" id="5_o1er0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c81qi"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76arf"]
+albedo_color = Color(0.310617, 0.310617, 0.310617, 1)
+albedo_texture = ExtResource("2_is5tk")
 
-[sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
-material = SubResource("StandardMaterial3D_c81qi")
+[sub_resource type="TorusMesh" id="TorusMesh_wjodn"]
+lightmap_size_hint = Vector2i(33, 9)
+inner_radius = 0.637
+outer_radius = 0.724
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cf3qo"]
+albedo_color = Color(0.886262, 0.886261, 0.886262, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hpqlg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cy6n8"]
 size = Vector3(1.10493, 1.0546, 1)
@@ -25,9 +34,15 @@ script = ExtResource("1_2e8h2")
 [node name="Moveables" type="Node3D" parent="."]
 
 [node name="ClockModel" type="MeshInstance3D" parent="Moveables"]
-transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 0, 1.869, 0)
-mesh = SubResource("BoxMesh_x27t2")
+transform = Transform3D(2.04854, 0, 0, 0, 0.0302918, -1.99271, 0, 1.70138, 0.0354787, 0, 1.869, 0)
+material_override = SubResource("StandardMaterial3D_76arf")
+mesh = SubResource("TorusMesh_wjodn")
 skeleton = NodePath("../..")
+
+[node name="ClockBack" type="MeshInstance3D" parent="Moveables/ClockModel"]
+transform = Transform3D(1.31821, 0, 0, 0, 0.0207436, 0, 0, 0, 1.31821, 0, -0.0572412, -3.06919e-10)
+material_override = SubResource("StandardMaterial3D_cf3qo")
+mesh = SubResource("CylinderMesh_hpqlg")
 
 [node name="Area3D" type="Area3D" parent="Moveables/ClockModel"]
 
@@ -41,22 +56,22 @@ visible = false
 text = "3:00"
 
 [node name="HoursHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0280791, 1.31875, 1.11411)
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.028079, 1.67187, -0.0131953)
 offset = Vector2(0, 118.175)
 texture = ExtResource("2_meemi")
 
 [node name="MinutesHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0285275, 1.31957, 1.07783)
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0285274, 1.67269, 0.00560176)
 offset = Vector2(0, 177.405)
 texture = ExtResource("3_gqm77")
 
 [node name="SecondsHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, 0.0218149, 1.30295, 1.00683)
+transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, 0.0385281, 1.65967, -0.015564)
 offset = Vector2(0, 104.6)
 texture = ExtResource("4_o2spu")
 
 [node name="GnomeModel" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, -0.303937, -0.102783, -1.9332)
+transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, -0.303937, 0.895019, -0.514238)
 material_override = SubResource("StandardMaterial3D_7f02i")
 mesh = ExtResource("4_5fk7a")
 
