@@ -44,6 +44,7 @@ func _GameStart():
 	$Health1.visible = true
 	$Health2.visible = true
 	$Health3.visible = true
+	$Mouseblocker.visible = false
 	Globals.health = 3
 	
 func _GameEnd(GameWon : bool):
@@ -52,6 +53,7 @@ func _GameEnd(GameWon : bool):
 		await get_tree().create_timer(2.0).timeout
 		CurrentGameState = GameState.IDLE
 		$GameOverMessage.visible = false
+		$Mouseblocker.visible = true
 		_ResetGame()
 	else: 
 		$GameWonMessage.visible = true

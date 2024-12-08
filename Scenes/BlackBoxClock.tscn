@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0w1wd7usrxqt"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_y3hjs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0e13"]
+albedo_color = Color(0.266575, 0.266575, 0.266575, 1)
+metallic = 0.48
+
+[sub_resource type="BoxMesh" id="BoxMesh_ogk78"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e2es"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3cuqa"]
+
+[node name="Clock" instance=ExtResource("1_y3hjs")]
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(1.31318, 0, 0, 0, 0.0223529, -1.71313, 0, 1.25548, 0.0305009, 0, 1.869, 0)
+material_override = SubResource("StandardMaterial3D_i0e13")
+mesh = SubResource("BoxMesh_ogk78")
+
+[node name="ClockBack" parent="Moveables/ClockModel" index="0"]
+transform = Transform3D(0.791328, 0, 0, 0, 0.0207436, 0, 0, 0, 0.865713, 0, 0.519762, 2.81725e-10)
+material_override = SubResource("StandardMaterial3D_0e2es")
+mesh = SubResource("BoxMesh_3cuqa")
+
+[node name="ClockBack2" parent="Moveables/ClockModel" index="1"]
+transform = Transform3D(1.31821, 0, 0, 0, 0.0207436, 0, 0, 0, 1.31821, 0, -0.510987, -3.83649e-10)
+visible = false
+
+[node name="HoursHand" parent="Moveables" index="2"]
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0280791, 1.67187, 0.669732)
+
+[node name="MinutesHand" parent="Moveables" index="3"]
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0285275, 1.67269, 0.686579)
+
+[node name="SecondsHand" parent="Moveables" index="4"]
+transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, 0.0385282, 1.65967, 0.743271)
+
+[node name="GnomeModel" parent="." index="1"]
+transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, -0.0815478, 0.895019, -0.621187)
