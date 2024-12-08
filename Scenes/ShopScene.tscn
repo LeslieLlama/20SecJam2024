@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=31 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://Scripts/shop_scene.gd" id="1_rdwyc"]
@@ -11,9 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dv4xklrqgnosb" path="res://Scenes/big_red_button.tscn" id="7_cw0bq"]
 [ext_resource type="Texture2D" uid="uid://cbky7eowpgplj" path="res://Textures/HangingSignTexture.png" id="8_0ln3d"]
 [ext_resource type="Texture2D" uid="uid://ydlvb2240wrr" path="res://Textures/SundialTexture.png" id="9_ql80y"]
+[ext_resource type="PackedScene" uid="uid://c6pdiakcixcgu" path="res://Scenes/grandfather_clock.tscn" id="10_eaac2"]
 [ext_resource type="PackedScene" uid="uid://sh6u5w84by0t" path="res://Scenes/DigitalClock.tscn" id="11_pvbqw"]
-[ext_resource type="ArrayMesh" uid="uid://c2oyq3ums6ra0" path="res://3DModels/Grandfather_Clock_Model.obj" id="13_hd8tp"]
-[ext_resource type="Texture2D" uid="uid://dhhqno1h0j1ir" path="res://Textures/GrandfatherClockTexture.png" id="14_cstoe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvm2f"]
 albedo_texture = ExtResource("4_dwyan")
@@ -44,6 +43,15 @@ uv1_scale = Vector3(2, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_x27t2"]
 material = SubResource("StandardMaterial3D_c81qi")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fedmm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.486275)
+metallic = 0.66
+metallic_specular = 0.69
+
+[sub_resource type="BoxMesh" id="BoxMesh_skvh0"]
+material = SubResource("StandardMaterial3D_fedmm")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yhas"]
 albedo_texture = ExtResource("6_481hs")
 uv1_scale = Vector3(1.8, 1.625, 1.8)
@@ -62,26 +70,11 @@ uv1_offset = Vector3(-0.91, -0.925, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_et0j3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ls2mj"]
-albedo_texture = ExtResource("14_cstoe")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ws3s"]
+albedo_color = Color(0.442911, 0.442911, 0.442911, 1)
+albedo_texture = ExtResource("4_dwyan")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ltfw"]
-albedo_texture = ExtResource("14_cstoe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pat22"]
-albedo_texture = ExtResource("14_cstoe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1bf2"]
-albedo_texture = ExtResource("14_cstoe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7tba"]
-albedo_texture = ExtResource("14_cstoe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v138q"]
-albedo_texture = ExtResource("14_cstoe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0prt"]
-albedo_texture = ExtResource("14_cstoe")
+[sub_resource type="BoxMesh" id="BoxMesh_7lckt"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
@@ -126,14 +119,24 @@ mesh = SubResource("PlaneMesh_d10h0")
 skeleton = NodePath("../../Camera3D")
 
 [node name="Cube2" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 1.01523, 1.85048)
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 1.01523, -5.83235)
 mesh = SubResource("BoxMesh_x27t2")
 skeleton = NodePath("../..")
 
+[node name="Cube6" type="MeshInstance3D" parent="Enviroment/Cube2"]
+transform = Transform3D(1, 0, 0, 0, 0.747927, 0, 0, 0, 1, 0, 0.861202, 0)
+mesh = SubResource("BoxMesh_skvh0")
+skeleton = NodePath("../../..")
+
 [node name="Cube3" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 0.250489, -2.38893)
+transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, 10.0199, 0.250489, -9.21341)
 mesh = SubResource("BoxMesh_x27t2")
 skeleton = NodePath("../..")
+
+[node name="Cube7" type="MeshInstance3D" parent="Enviroment/Cube3"]
+transform = Transform3D(1, 0, 0, 0, 0.747927, 0, 0, 0, 1, 0.00127371, 0.870799, 0.00148885)
+mesh = SubResource("BoxMesh_skvh0")
+skeleton = NodePath("../../..")
 
 [node name="Cube4" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 7.22759, -10.2593, 0.250489, -0.170988)
@@ -175,7 +178,7 @@ font_size = 24
 outline_size = 0
 
 [node name="HangingSign2" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(-1.48787e-07, 0, 0.390724, 0, 1.80249, 0, -3.40385, 0, -1.70791e-08, 12.6833, 8.44823, -0.385951)
+transform = Transform3D(-1.48787e-07, 0, 0.390724, 0, 1.80249, 0, -3.40385, 0, -1.70791e-08, 12.6833, 10.5499, -9.85595)
 material_override = SubResource("StandardMaterial3D_rqa66")
 mesh = SubResource("BoxMesh_hvvdj")
 skeleton = NodePath("../..")
@@ -193,16 +196,19 @@ outline_size = 0
 [node name="Clocks" type="Node3D" parent="."]
 
 [node name="Clock1" parent="Clocks" instance=ExtResource("2_78t57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83549, -12.5773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7956, 6.30029, -12.5594)
 
 [node name="Clock2" parent="Clocks" instance=ExtResource("2_78t57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25668, 2.82068, -12.5206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05228, 4.28548, -12.5027)
 
 [node name="Clock3" parent="Clocks" instance=ExtResource("2_78t57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.098, 2.75798, -12.521)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.697598, 4.22278, -12.5031)
+
+[node name="GrandfatherClock" parent="Clocks" instance=ExtResource("10_eaac2")]
+transform = Transform3D(0.0156026, 0, 0.999878, 0, 1, 0, -0.999878, 0, 0.0156026, 9.97281, -1.73086, 0.213588)
 
 [node name="Sundial" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.48787e-07, 0.057944, -1.47016e-07, 0, -2.53281e-09, -3.36334, -3.40385, -2.53281e-09, 6.42629e-15, 12.5165, 5.41666, -0.385951)
+transform = Transform3D(-1.48787e-07, 0.057944, -1.47016e-07, 0, -2.53281e-09, -3.36334, -3.40385, -2.53281e-09, 6.42629e-15, 12.5165, 7.6444, -9.89735)
 material_override = SubResource("StandardMaterial3D_argnx")
 mesh = SubResource("CylinderMesh_et0j3")
 skeleton = NodePath("../Enviroment/HangingSign2")
@@ -215,10 +221,10 @@ transform = Transform3D(-0.0880251, 0, 0.996118, 0, 1, 0, -0.996118, 0, -0.08802
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8086, 0)
 light_color = Color(1, 0.74902, 0.486275, 1)
-light_energy = 11.224
 light_size = 0.276
 shadow_enabled = true
-omni_range = 17.55
+omni_range = 22.447
+omni_attenuation = 0.408
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.812903, 0.457099, -0.3609, 0.0146064, 0.603482, 0.797242, 0.582216, -0.653352, 0.483896, 0, 8.11136, 0)
@@ -231,15 +237,29 @@ one_shot = true
 [node name="DigitalClock" parent="." instance=ExtResource("11_pvbqw")]
 transform = Transform3D(-0.0595677, 0, 0.998224, 0, 1, 0, -0.998224, 0, -0.0595677, -10.1311, 0.650813, 2.60866)
 
-[node name="GrandfatherClockModel" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24163, -5.4649, 24.1074)
-mesh = ExtResource("13_hd8tp")
-surface_material_override/0 = SubResource("StandardMaterial3D_ls2mj")
-surface_material_override/1 = SubResource("StandardMaterial3D_8ltfw")
-surface_material_override/2 = SubResource("StandardMaterial3D_pat22")
-surface_material_override/3 = SubResource("StandardMaterial3D_a1bf2")
-surface_material_override/4 = SubResource("StandardMaterial3D_b7tba")
-surface_material_override/5 = SubResource("StandardMaterial3D_v138q")
-surface_material_override/6 = SubResource("StandardMaterial3D_s0prt")
+[node name="Bench" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.76003, 0, 0, 0, 0.410709, 0, 0, 0, 3.12832, -9.23314, 3.63381, -11.5957)
+material_override = SubResource("StandardMaterial3D_7ws3s")
+mesh = SubResource("BoxMesh_7lckt")
+
+[node name="BenchLeg" type="MeshInstance3D" parent="Bench"]
+transform = Transform3D(0.0412289, 0, 0, 0, 8.90604, 0, 0, 0, 0.10894, 0.444244, -4.5853, 0.389797)
+mesh = SubResource("BoxMesh_7lckt")
+skeleton = NodePath("../..")
+
+[node name="BenchLeg2" type="MeshInstance3D" parent="Bench"]
+transform = Transform3D(0.0412289, 0, 0, 0, 8.90604, 0, 0, 0, 0.10894, -0.408115, -4.5853, 0.389797)
+mesh = SubResource("BoxMesh_7lckt")
+skeleton = NodePath("../..")
+
+[node name="BenchLeg3" type="MeshInstance3D" parent="Bench"]
+transform = Transform3D(0.0412289, 0, 0, 0, 8.90604, 0, 0, 0, 0.10894, 0.444244, -4.5853, -0.219706)
+mesh = SubResource("BoxMesh_7lckt")
+skeleton = NodePath("../..")
+
+[node name="BenchLeg4" type="MeshInstance3D" parent="Bench"]
+transform = Transform3D(0.0412289, 0, 0, 0, 8.90604, 0, 0, 0, 0.10894, -0.408115, -4.5853, -0.219706)
+mesh = SubResource("BoxMesh_7lckt")
+skeleton = NodePath("../..")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

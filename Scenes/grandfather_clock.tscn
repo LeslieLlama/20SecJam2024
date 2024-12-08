@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6pdiakcixcgu"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_id516"]
+[ext_resource type="Texture2D" uid="uid://dhhqno1h0j1ir" path="res://Textures/GrandfatherClockTexture.png" id="2_bltyl"]
+[ext_resource type="ArrayMesh" uid="uid://c2oyq3ums6ra0" path="res://3DModels/Grandfather_Clock_Model.obj" id="3_gj2ip"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fllvl"]
+albedo_texture = ExtResource("2_bltyl")
+
+[node name="GrandfatherClock" instance=ExtResource("1_id516")]
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.869, 0)
+material_override = SubResource("StandardMaterial3D_fllvl")
+mesh = ExtResource("3_gj2ip")
+
+[node name="HoursHand" parent="Moveables" index="2"]
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.00510556, 10.2398, -0.193005)
+
+[node name="MinutesHand" parent="Moveables" index="3"]
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, -0.027689, 10.2234, -0.199476)
+
+[node name="SecondsHand" parent="Moveables" index="4"]
+transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, -0.0185671, 10.2259, -0.200017)
+
+[node name="GnomeModel" parent="." index="1"]
+transform = Transform3D(-0.347851, 0, -0.0114179, 0, 0.348038, 0, 0.0114179, 0, -0.347851, -0.342116, 1.91566, 2.30362)

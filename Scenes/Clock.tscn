@@ -1,24 +1,26 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc1obhce5w5rx"]
+[gd_scene load_steps=15 format=3 uid="uid://bc1obhce5w5rx"]
 
 [ext_resource type="Script" path="res://Scripts/clock_object.gd" id="1_2e8h2"]
-[ext_resource type="Texture2D" uid="uid://d3y8851klop34" path="res://Textures/WallTexture.jpg" id="2_is5tk"]
 [ext_resource type="Texture2D" uid="uid://mfx51f3dydgl" path="res://Sprites/HoursHandDefault.jpeg" id="2_meemi"]
+[ext_resource type="Texture2D" uid="uid://bwltopu5deprm" path="res://Textures/FloorTexture.jpg" id="2_ri1hb"]
 [ext_resource type="Texture2D" uid="uid://cdxffuukd7m4u" path="res://Sprites/MinutesHandDefault.jpeg" id="3_gqm77"]
+[ext_resource type="Texture2D" uid="uid://275i8cejyb44" path="res://Textures/ClockFace1.png" id="3_i4dvt"]
 [ext_resource type="ArrayMesh" uid="uid://bwehrup5tcha2" path="res://3DModels/Gnome_Model.obj" id="4_5fk7a"]
 [ext_resource type="Texture2D" uid="uid://scffks2wotsy" path="res://Sprites/SecondsHandDefault.jpg" id="4_o2spu"]
 [ext_resource type="Texture2D" uid="uid://clpe146xh13wn" path="res://Textures/GnomeTexture.png" id="5_o1er0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76arf"]
-albedo_color = Color(0.310617, 0.310617, 0.310617, 1)
-albedo_texture = ExtResource("2_is5tk")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jupj7"]
+albedo_texture = ExtResource("2_ri1hb")
 
 [sub_resource type="TorusMesh" id="TorusMesh_wjodn"]
 lightmap_size_hint = Vector2i(33, 9)
 inner_radius = 0.637
 outer_radius = 0.724
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cf3qo"]
-albedo_color = Color(0.886262, 0.886261, 0.886262, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jynv"]
+albedo_texture = ExtResource("3_i4dvt")
+uv1_scale = Vector3(1.965, 1.965, 1.965)
+uv1_offset = Vector3(0.014, 0.025, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hpqlg"]
 
@@ -35,13 +37,13 @@ script = ExtResource("1_2e8h2")
 
 [node name="ClockModel" type="MeshInstance3D" parent="Moveables"]
 transform = Transform3D(2.04854, 0, 0, 0, 0.0302918, -1.99271, 0, 1.70138, 0.0354787, 0, 1.869, 0)
-material_override = SubResource("StandardMaterial3D_76arf")
+material_override = SubResource("StandardMaterial3D_jupj7")
 mesh = SubResource("TorusMesh_wjodn")
 skeleton = NodePath("../..")
 
 [node name="ClockBack" type="MeshInstance3D" parent="Moveables/ClockModel"]
 transform = Transform3D(1.31821, 0, 0, 0, 0.0207436, 0, 0, 0, 1.31821, 0, -0.0572412, -3.06919e-10)
-material_override = SubResource("StandardMaterial3D_cf3qo")
+material_override = SubResource("StandardMaterial3D_8jynv")
 mesh = SubResource("CylinderMesh_hpqlg")
 
 [node name="Area3D" type="Area3D" parent="Moveables/ClockModel"]
