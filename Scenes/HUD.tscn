@@ -111,4 +111,41 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.784314, 0.0196078, 0.219608, 0.00392157)
 
+[node name="HowToPlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 46
+text = "?"
+
+[node name="InstructionManual" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 101.0
+offset_top = 38.0
+offset_right = 1009.0
+offset_bottom = 575.0
+mouse_filter = 2
+color = Color(0.355314, 0.355314, 0.355314, 1)
+
+[node name="Label" type="Label" parent="InstructionManual"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -11.5
+offset_right = 72.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "(Instructions Here)"
+
 [connection signal="button_up" from="StartGame" to="." method="_on_start_game_button_up"]
+[connection signal="button_up" from="HowToPlayButton" to="." method="_on_how_to_play_button_button_up"]

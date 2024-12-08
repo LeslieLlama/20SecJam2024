@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bc1obhce5w5rx"]
+[gd_scene load_steps=16 format=3 uid="uid://bc1obhce5w5rx"]
 
 [ext_resource type="Script" path="res://Scripts/clock_object.gd" id="1_2e8h2"]
 [ext_resource type="Texture2D" uid="uid://mfx51f3dydgl" path="res://Sprites/HoursHandDefault.jpeg" id="2_meemi"]
@@ -24,8 +24,11 @@ uv1_offset = Vector3(0.014, 0.025, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hpqlg"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cy6n8"]
-size = Vector3(1.10493, 1.0546, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv3k2"]
+albedo_color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4v4g"]
+size = Vector3(1.34967, 0.298828, 1.32251)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f02i"]
 albedo_texture = ExtResource("5_o1er0")
@@ -46,11 +49,16 @@ transform = Transform3D(1.31821, 0, 0, 0, 0.0207436, 0, 0, 0, 1.31821, 0, -0.057
 material_override = SubResource("StandardMaterial3D_8jynv")
 mesh = SubResource("CylinderMesh_hpqlg")
 
+[node name="ClockBack2" type="MeshInstance3D" parent="Moveables/ClockModel"]
+transform = Transform3D(1.31821, 0, 0, 0, 0.0207436, 0, 0, 0, 1.31821, 0, -0.0782883, -3.83649e-10)
+material_override = SubResource("StandardMaterial3D_sv3k2")
+mesh = SubResource("CylinderMesh_hpqlg")
+
 [node name="Area3D" type="Area3D" parent="Moveables/ClockModel"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Moveables/ClockModel/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, -0.00792693, -0.0103911, 0)
-shape = SubResource("BoxShape3D_cy6n8")
+transform = Transform3D(1, 0, 0, 0, 0.99992, -1.95578e-07, 0, 8.95932e-07, 0.999871, -0.00936125, 0.0208584, -0.000368595)
+shape = SubResource("BoxShape3D_k4v4g")
 
 [node name="DigitalReadout" type="Label3D" parent="Moveables"]
 transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 2.90988, 1.08392)

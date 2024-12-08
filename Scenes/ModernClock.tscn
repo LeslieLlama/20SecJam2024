@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8k0xsofif1nw"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_o38di"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msmu8"]
+albedo_color = Color(0.46788, 0.664972, 0.804141, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0kaj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwicg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_aohvd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xx7d4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ny287"]
+size = Vector3(1.26147, 1.15472, 1.54675)
+
+[node name="ModernClock" instance=ExtResource("1_o38di")]
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(2.55, 0, 0, 0, 2.5226, -0.0115109, 0, 0.110095, 0.263749, 0.0334156, 1.69222, -0.179258)
+material_override = SubResource("StandardMaterial3D_msmu8")
+mesh = SubResource("BoxMesh_b0kaj")
+
+[node name="ClockBack" parent="Moveables/ClockModel" index="0"]
+transform = Transform3D(1.27768, 0, 0, 0, 0.132723, 0, 0, 0, 1.92035, 0, -0.573354, 2.14844e-09)
+material_override = SubResource("StandardMaterial3D_bwicg")
+mesh = SubResource("BoxMesh_aohvd")
+
+[node name="ClockBack3" type="MeshInstance3D" parent="Moveables/ClockModel" index="1"]
+transform = Transform3D(1.27768, 0, 0, 0, 0.132723, 0, 0, 0, 1.92035, 0, 0.547104, 3.07639e-08)
+material_override = SubResource("StandardMaterial3D_bwicg")
+mesh = SubResource("BoxMesh_aohvd")
+
+[node name="ClockBack4" type="MeshInstance3D" parent="Moveables/ClockModel" index="2"]
+transform = Transform3D(0.140622, 0, 0, 0, 1.05822, 0, 0, 0, 1.92035, -0.568005, -0.0373786, 5.93794e-08)
+material_override = SubResource("StandardMaterial3D_bwicg")
+mesh = SubResource("BoxMesh_aohvd")
+
+[node name="ClockBack5" type="MeshInstance3D" parent="Moveables/ClockModel" index="3"]
+transform = Transform3D(0.140622, 0, 0, 0, 1.05822, 0, 0, 0, 1.92035, 0.564818, -0.0373786, 5.93794e-08)
+material_override = SubResource("StandardMaterial3D_bwicg")
+mesh = SubResource("BoxMesh_aohvd")
+
+[node name="ClockBack2" parent="Moveables/ClockModel" index="4"]
+transform = Transform3D(0.995045, 0, 0, 0, 0.971787, 0, 0, 0, 0.506643, 0, -0.0183329, -0.583732)
+mesh = SubResource("BoxMesh_xx7d4")
+
+[node name="CollisionShape3D" parent="Moveables/ClockModel/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.99992, -1.96043e-07, 0, 8.64267e-07, 0.999871, -0.00508879, -0.0126781, 0.272973)
+shape = SubResource("BoxShape3D_ny287")

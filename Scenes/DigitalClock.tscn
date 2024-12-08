@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://sh6u5w84by0t"]
+[gd_scene load_steps=6 format=3 uid="uid://sh6u5w84by0t"]
 
 [ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_0yl8x"]
 [ext_resource type="Script" path="res://Scripts/clock_object_digital.gd" id="2_kqoff"]
@@ -8,6 +8,8 @@ albedo_color = Color(0.180005, 0.180005, 0.180005, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_peqyg"]
 material = SubResource("StandardMaterial3D_61rtl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t71jy"]
 
 [node name="DigitalClock" instance=ExtResource("1_0yl8x")]
 script = ExtResource("2_kqoff")
@@ -19,6 +21,12 @@ mesh = SubResource("BoxMesh_peqyg")
 
 [node name="ClockBack" parent="Moveables/ClockModel" index="0"]
 visible = false
+
+[node name="ClockBack2" parent="Moveables/ClockModel" index="1"]
+visible = false
+
+[node name="CollisionShape3D" parent="Moveables/ClockModel/Area3D" index="0"]
+shape = SubResource("BoxShape3D_t71jy")
 
 [node name="DigitalReadout" parent="Moveables" index="1"]
 transform = Transform3D(2.04854, 0, 0, 0, 3.67713, 0, 0, 0, 1.99303, -0.00120074, 1.9198, 0.750708)

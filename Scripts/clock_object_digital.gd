@@ -20,6 +20,7 @@ func _GameStart():
 	#reset to the normal value in the case where the previous game inverted the speed
 	secondsHandSpeed = baseSecondsHandSpeed
 	secondsHandRunning = true
+	$GnomeModel.visible = false
 	
 func _GameEnd(GameWon:bool):
 	secondsHandRunning = false

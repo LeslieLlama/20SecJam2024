@@ -6,6 +6,9 @@ var baseSecondsHandSpeed : float = 6
 var secondsHandSpeed : float
 var secondsHandRunning : bool = false
 var base_Y_Rotation : float
+var starting_position : Vector3 = Vector3(0,0,0)
+var altered_position : Vector3 = Vector3(-5,0,0)
+var has_moved : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,13 +16,13 @@ func _ready() -> void:
 	$GnomeModel.visible = false
 	Signals.GameStart.connect(_GameStart)
 	Signals.GameEnd.connect(_GameEnd)
-	
 	pass
 
 func _GameStart():
 	#reset to the normal value in the case where the previous game inverted the speed
 	secondsHandSpeed = baseSecondsHandSpeed
 	secondsHandRunning = true
+	$Moveables.position = starting_position
 	$GnomeModel.visible = false
 	
 func _GameEnd(GameWon:bool):
@@ -35,11 +38,14 @@ func _process(delta: float) -> void:
 	
 func _check_gnome():
 	var tween = get_tree().create_tween()
-	tween.tween_property($Moveables, "position", Vector3(0,5,0), 1).set_trans(Tween.TRANS_SINE)
-	tween.tween_property($Moveables, "position", at_rest_position, 1).set_trans(Tween.TRANS_SINE)
-	if is_gnomed == false:
-		Signals.emit_signal("TakeDamage")
-	else:
+	if(has_moved == false):
+		tween.tween_property($Moveables, "position", altered_position, 1).set_trans(Tween.TRANS_SINE)
+	else: 
+		tween.tween_property($Moveables, "position", starting_position, 1).set_trans(Tween.TRANS_SINE)
+	has_moved = !has_moved
+	#tween.tween_property($Moveables, "position", at_rest_position, 1).set_trans(Tween.TRANS_SINE)
+	#grandfather clock does not take a health point when moved/checked
+	if is_gnomed == true:
 		Signals.emit_signal("GameEnd", true)
 	
 func _set_clock():

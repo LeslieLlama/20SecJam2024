@@ -34,6 +34,9 @@ transform = Transform3D(-0.205611, 0, -1.79751e-08, 0, 0.205611, 0, 1.79751e-08,
 [node name="MinutesHand" parent="Moveables" index="3"]
 transform = Transform3D(-0.205611, 0, -1.79751e-08, 0, 0.205611, 0, 1.79751e-08, 0, -0.205611, -0.000134936, 1.0284, 0.22199)
 
+[node name="SecondsHand" parent="Moveables" index="4"]
+transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, -0.0022892, 1.01484, 0.261105)
+
 [node name="GnomeModel" parent="." index="1"]
 transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, -0.303937, -0.102783, -1.00772)
 material_override = SubResource("StandardMaterial3D_vscma")

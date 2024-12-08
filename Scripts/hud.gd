@@ -3,6 +3,7 @@ extends Control
 enum GameState {IDLE, PLAY_GAME}
 var CurrentGameState = GameState.IDLE
 var healthSprites: Array[Node] = []
+var instruction_manual_active : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +14,7 @@ func _ready() -> void:
 	Signals.RedDeath.connect(_RedDeath)
 	$GameOverMessage.visible = false
 	$GameWonMessage.visible = false
+	$InstructionManual.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,7 +24,15 @@ func _process(delta: float) -> void:
 	if CurrentGameState == GameState.PLAY_GAME:
 		$TimeRemainingLabel.text = str(Globals.time_remaining," Seconds")
 
-
+func _on_how_to_play_button_button_up() -> void:
+	if instruction_manual_active == false:
+		$InstructionManual.visible = true
+		$HowToPlayButton.text = str("X")
+	else: 
+		$InstructionManual.visible = false
+		$HowToPlayButton.text = str("?")
+	instruction_manual_active = !instruction_manual_active
+	
 
 func _on_start_game_button_up() -> void:
 	Signals.emit_signal("GameStart")
