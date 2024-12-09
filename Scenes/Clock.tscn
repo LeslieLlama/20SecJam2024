@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bc1obhce5w5rx"]
+[gd_scene load_steps=13 format=3 uid="uid://bc1obhce5w5rx"]
 
 [ext_resource type="Script" path="res://Scripts/clock_object.gd" id="1_2e8h2"]
-[ext_resource type="Texture2D" uid="uid://mfx51f3dydgl" path="res://Sprites/HoursHandDefault.jpeg" id="2_meemi"]
 [ext_resource type="Texture2D" uid="uid://bwltopu5deprm" path="res://Textures/FloorTexture.jpg" id="2_ri1hb"]
-[ext_resource type="Texture2D" uid="uid://cdxffuukd7m4u" path="res://Sprites/MinutesHandDefault.jpeg" id="3_gqm77"]
+[ext_resource type="Texture2D" uid="uid://c2ovgu3buamcv" path="res://Sprites/ClockHandsWhite.png" id="3_jy53b"]
 [ext_resource type="ArrayMesh" uid="uid://bwehrup5tcha2" path="res://3DModels/Gnome_Model.obj" id="4_5fk7a"]
-[ext_resource type="Texture2D" uid="uid://scffks2wotsy" path="res://Sprites/SecondsHandDefault.jpg" id="4_o2spu"]
 [ext_resource type="Texture2D" uid="uid://clpe146xh13wn" path="res://Textures/GnomeTexture.png" id="5_o1er0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jupj7"]
@@ -62,19 +60,31 @@ visible = false
 text = "3:00"
 
 [node name="HoursHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.028079, 1.67187, -0.0131953)
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, -3.86545e-09, 1.672, -0.0442156)
 offset = Vector2(0, 118.175)
-texture = ExtResource("2_meemi")
+flip_v = true
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("3_jy53b")
+region_enabled = true
+region_rect = Rect2(4790.75, 1645.2, 59.966, 298.728)
 
 [node name="MinutesHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0285274, 1.67269, 0.00560176)
-offset = Vector2(0, 177.405)
-texture = ExtResource("3_gqm77")
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0, 1.673, 0)
+offset = Vector2(0, 188.08)
+flip_v = true
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("3_jy53b")
+region_enabled = true
+region_rect = Rect2(4856.12, 1642.31, 52.0664, 431.407)
 
 [node name="SecondsHand" type="Sprite3D" parent="Moveables"]
-transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, 0.0385281, 1.65967, -0.015564)
-offset = Vector2(0, 104.6)
-texture = ExtResource("4_o2spu")
+transform = Transform3D(-0.256, 0, -9.81473e-09, 0, 0.254, 0, 3.86549e-08, 0, -0.065, 6.02925e-09, 1.66, 0.0399299)
+offset = Vector2(1.005, 215.615)
+flip_v = true
+modulate = Color(0.639539, 0.328384, 0.284142, 1)
+texture = ExtResource("3_jy53b")
+region_enabled = true
+region_rect = Rect2(2614, 1643, 65.0002, 496.002)
 
 [node name="GnomeModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, -0.303937, 0.895019, -0.514238)

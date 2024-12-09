@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=43 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://Scripts/shop_scene.gd" id="1_rdwyc"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c532eyni0s47u" path="res://Scenes/HUD.tscn" id="2_i3yuw"]
 [ext_resource type="Texture2D" uid="uid://bwltopu5deprm" path="res://Textures/FloorTexture.jpg" id="4_dwyan"]
 [ext_resource type="PackedScene" uid="uid://crc7gn1b8slty" path="res://Scenes/AlarmClock.tscn" id="5_blq43"]
-[ext_resource type="Texture2D" uid="uid://dkdl7sql70e1g" path="res://Textures/DoorTexture.jpg" id="6_481hs"]
 [ext_resource type="PackedScene" uid="uid://dv4xklrqgnosb" path="res://Scenes/big_red_button.tscn" id="7_cw0bq"]
 [ext_resource type="Texture2D" uid="uid://cbky7eowpgplj" path="res://Textures/HangingSignTexture.png" id="8_0ln3d"]
 [ext_resource type="Texture2D" uid="uid://ydlvb2240wrr" path="res://Textures/SundialTexture.png" id="9_ql80y"]
@@ -16,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://c8k0xsofif1nw" path="res://Scenes/ModernClock.tscn" id="13_q4ft6"]
 [ext_resource type="PackedScene" uid="uid://dmos0xlcmtyu" path="res://Scenes/GoldClock.tscn" id="14_28pxq"]
 [ext_resource type="PackedScene" uid="uid://b0w1wd7usrxqt" path="res://Scenes/BlackBoxClock.tscn" id="15_1eqt6"]
+[ext_resource type="PackedScene" uid="uid://c1ocs6j38e06e" path="res://Scenes/pole_clock.tscn" id="16_jor5b"]
+[ext_resource type="PackedScene" uid="uid://cpvwvemnx8rfv" path="res://Scenes/BigClock.tscn" id="17_4hplx"]
 [ext_resource type="Script" path="res://Scenes/save_manager.gd" id="17_mi7f2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpctc"]
@@ -38,10 +39,18 @@ metallic_specular = 0.69
 [sub_resource type="BoxMesh" id="BoxMesh_skvh0"]
 material = SubResource("StandardMaterial3D_is8dm")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yhas"]
-albedo_texture = ExtResource("6_481hs")
-uv1_scale = Vector3(1.8, 1.625, 1.8)
-uv1_offset = Vector3(0, 0.1, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rwiw"]
+albedo_color = Color(0.413174, 0.207139, 0.16034, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j31xt"]
+albedo_color = Color(0.725681, 0.551297, 0.113818, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rgk6p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ake06"]
+albedo_color = Color(0.310069, 0.149609, 0.112614, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uru8g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqa66"]
 albedo_texture = ExtResource("8_0ln3d")
@@ -67,11 +76,8 @@ albedo_color = Color(0.551881, 0.318135, 0.165607, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmn32"]
 albedo_color = Color(0.252663, 0.306914, 0.616913, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpatc"]
-albedo_color = Color(0.620422, 0.669255, 0.405941, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84unp"]
-albedo_color = Color(0.783081, 0.588935, 0.489598, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rrmw"]
+albedo_color = Color(0.690769, 0.193855, 0.242257, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_argnx"]
 albedo_texture = ExtResource("9_ql80y")
@@ -80,12 +86,11 @@ uv1_offset = Vector3(-0.91, -0.925, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_et0j3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rrmw"]
-albedo_color = Color(0.690769, 0.193855, 0.242257, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_5davn"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
-Clocks = [NodePath("Clocks/Clock1"), NodePath("Clocks/Clock2"), NodePath("Clocks/Clock3"), NodePath("Clocks/Clock4"), NodePath("Clocks/AlarmClock1"), NodePath("Clocks/AlarmClock2"), NodePath("Clocks/AlarmClock3"), NodePath("Clocks/AlarmClock4"), NodePath("Clocks/AlarmClock5"), NodePath("Clocks/AlarmClock6"), NodePath("Clocks/AlarmClock7"), NodePath("Clocks/DigitalClock"), NodePath("Clocks/DigitalClock2"), NodePath("Clocks/GrandfatherClock"), NodePath("Clocks/ModernClock"), NodePath("Clocks/ModernClock2"), NodePath("Clocks/ModernClock3"), NodePath("Clocks/StarClock"), NodePath("Clocks/GoldCLock1"), NodePath("Clocks/BlackboxClock")]
+Clocks = [NodePath("Clocks/Clock1"), NodePath("Clocks/Clock2"), NodePath("Clocks/Clock3"), NodePath("Clocks/Clock4"), NodePath("Clocks/AlarmClock1"), NodePath("Clocks/AlarmClock2"), NodePath("Clocks/AlarmClock3"), NodePath("Clocks/AlarmClock4"), NodePath("Clocks/AlarmClock5"), NodePath("Clocks/AlarmClock6"), NodePath("Clocks/AlarmClock7"), NodePath("Clocks/DigitalClock"), NodePath("Clocks/DigitalClock2"), NodePath("Clocks/GrandfatherClock"), NodePath("Clocks/ModernClock"), NodePath("Clocks/ModernClock2"), NodePath("Clocks/ModernClock3"), NodePath("Clocks/StarClock"), NodePath("Clocks/GoldCLock1"), NodePath("Clocks/BlackboxClock"), NodePath("Clocks/PoleClock"), NodePath("Clocks/PoleClock2"), NodePath("Clocks/BigClock")]
 
 [node name="HUD" parent="." instance=ExtResource("2_i3yuw")]
 
@@ -147,17 +152,38 @@ mesh = SubResource("BoxMesh_x27t2")
 skeleton = NodePath("../..")
 
 [node name="Door" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(4.71923, 0, 0, 0, 7.70375, 0, 0, 0, 1.99303, -0.16554, 3.63984, 12.5081)
-material_override = SubResource("StandardMaterial3D_4yhas")
+transform = Transform3D(4.71923, 0, 0, 0, 9.05425, 0, 0, 0, 1.99303, -0.16554, 3.83204, 12.5081)
+material_override = SubResource("StandardMaterial3D_1rwiw")
 mesh = SubResource("BoxMesh_x27t2")
 skeleton = NodePath("../..")
 
-[node name="Label3D" type="Label3D" parent="Enviroment/Door"]
-transform = Transform3D(-0.997671, 0, -0.0682069, 0, 1, 0, 0.0682069, 0, -0.997671, 0, 0, -0.585355)
-visible = false
-text = "Door"
+[node name="Knob" type="MeshInstance3D" parent="Enviroment/Door"]
+transform = Transform3D(0.12238, 0, 0, 0, 0.0648906, 0, 0, 0, 0.146281, 0.434105, 0.0582348, -0.538381)
+material_override = SubResource("StandardMaterial3D_j31xt")
+mesh = SubResource("SphereMesh_rgk6p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enviroment/Door"]
+transform = Transform3D(0.317715, 0, 0, 0, 0.270326, 0, 0, 0, 0.0738043, -0.225404, 0.221499, -0.530064)
+material_override = SubResource("StandardMaterial3D_ake06")
+mesh = SubResource("BoxMesh_uru8g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Enviroment/Door"]
+transform = Transform3D(0.317715, 0, 0, 0, 0.270326, 0, 0, 0, 0.0738043, 0.205938, 0.221499, -0.530064)
+material_override = SubResource("StandardMaterial3D_ake06")
+mesh = SubResource("BoxMesh_uru8g")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Enviroment/Door"]
+transform = Transform3D(0.317715, 0, 0, 0, 0.270326, 0, 0, 0, 0.0738043, -0.220419, -0.0920268, -0.530064)
+material_override = SubResource("StandardMaterial3D_ake06")
+mesh = SubResource("BoxMesh_uru8g")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Enviroment/Door"]
+transform = Transform3D(0.317715, 0, 0, 0, 0.270326, 0, 0, 0, 0.0738043, 0.211036, -0.0920268, -0.530064)
+material_override = SubResource("StandardMaterial3D_ake06")
+mesh = SubResource("BoxMesh_uru8g")
 
 [node name="BigRedButton" parent="Enviroment" instance=ExtResource("7_cw0bq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15716, 3.30072, 10.064)
 
 [node name="HangingSign1" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(3.40385, 0, 0, 0, 1.80249, 0, 0, 0, 0.390724, -9.0936, 5.67874, 12.3944)
@@ -176,7 +202,7 @@ font_size = 24
 outline_size = 0
 
 [node name="HangingSign2" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(-1.48787e-07, 0, 0.390724, 0, 1.80249, 0, -3.40385, 0, -1.70791e-08, 12.6833, 10.5499, -9.85595)
+transform = Transform3D(-1.48787e-07, 0, 0.390724, 0, 1.80249, 0, -3.40385, 0, -1.70791e-08, 14.551, 10.5499, -9.85595)
 material_override = SubResource("StandardMaterial3D_rqa66")
 mesh = SubResource("BoxMesh_hvvdj")
 skeleton = NodePath("../..")
@@ -248,6 +274,11 @@ transform = Transform3D(6.25384, 0, 0, 0, 0.350959, 0, 0, 0, 2.24434, 9.78724, 5
 material_override = SubResource("StandardMaterial3D_p4sxj")
 mesh = SubResource("BoxMesh_mdhft")
 
+[node name="Shelf4" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-0.19611, 0, 2.24323, 0, 0.350959, 0, -6.25077, 0, -0.0703788, 11.7543, 8.01992, -10.1686)
+material_override = SubResource("StandardMaterial3D_p4sxj")
+mesh = SubResource("BoxMesh_mdhft")
+
 [node name="Shelf2" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(6.25384, 0, 0, 0, 0.350959, 0, 0, 0, 2.24434, 9.78724, 3.13698, 11.581)
 material_override = SubResource("StandardMaterial3D_p4sxj")
@@ -297,6 +328,30 @@ material_override = SubResource("StandardMaterial3D_gmn32")
 mesh = SubResource("QuadMesh_q1drv")
 skeleton = NodePath("../../..")
 
+[node name="Carpet2" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(7.216, -0.769745, 0, -1.99607e-08, -5.31688e-07, 1.32126, -0.456648, -12.1636, -5.77542e-08, -8.38947, 0.00892362, -6.71347)
+material_override = SubResource("StandardMaterial3D_0rrmw")
+mesh = SubResource("QuadMesh_q1drv")
+skeleton = NodePath("../..")
+
+[node name="Sundial" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(-1.48787e-07, 0.057944, -1.47016e-07, 0, -2.53281e-09, -3.36334, -3.40385, -2.53281e-09, 6.42629e-15, 13.4037, 7.6444, -9.89735)
+material_override = SubResource("StandardMaterial3D_argnx")
+mesh = SubResource("CylinderMesh_et0j3")
+skeleton = NodePath("../HangingSign2")
+
+[node name="IronSphere" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9505, 8.67008, -8.08071)
+mesh = SubResource("SphereMesh_5davn")
+
+[node name="IronSphere2" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9505, 8.67008, -9.58815)
+mesh = SubResource("SphereMesh_5davn")
+
+[node name="IronSphere3" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9505, 8.67008, -11.4709)
+mesh = SubResource("SphereMesh_5davn")
+
 [node name="Clocks" type="Node3D" parent="."]
 
 [node name="Clock1" parent="Clocks" instance=ExtResource("2_78t57")]
@@ -327,16 +382,10 @@ transform = Transform3D(0.576261, 0, -0.817265, 0, 1, 0, 0.817265, 0, 0.576261, 
 transform = Transform3D(-0.00839496, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00839496, 12.1215, 5.25794, 6.71657)
 
 [node name="ModernClock2" parent="Clocks" instance=ExtResource("13_q4ft6")]
-transform = Transform3D(-0.00839496, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00839496, 12.1215, 9.02818, 6.71657)
-
-[node name="ClockModel" parent="Clocks/ModernClock2/Moveables" index="0"]
-material_override = SubResource("StandardMaterial3D_cpatc")
+transform = Transform3D(-0.00839496, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00839496, 12.1215, 9.29178, 6.71657)
 
 [node name="ModernClock3" parent="Clocks" instance=ExtResource("13_q4ft6")]
-transform = Transform3D(-0.00839496, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00839496, 12.1215, 1.44228, 6.71657)
-
-[node name="ClockModel" parent="Clocks/ModernClock3/Moveables" index="0"]
-material_override = SubResource("StandardMaterial3D_84unp")
+transform = Transform3D(-0.00839496, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00839496, 12.1215, 1.41286, 6.71657)
 
 [node name="AlarmClock1" parent="Clocks" instance=ExtResource("5_blq43")]
 transform = Transform3D(-0.0880251, 0, 0.996118, 0, 1, 0, -0.996118, 0, -0.0880251, -10.2757, 2.12617, -1.94593)
@@ -365,11 +414,14 @@ transform = Transform3D(-0.0134931, 0, 0.652863, 0, 0.653002, 0, -0.652863, 0, -
 [node name="BlackboxClock" parent="Clocks" instance=ExtResource("15_1eqt6")]
 transform = Transform3D(0.916788, 0, 0.399373, 0, 1, 0, -0.399373, 0, 0.916788, -7.29797, 2.87928, -11.0933)
 
-[node name="Sundial" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.48787e-07, 0.057944, -1.47016e-07, 0, -2.53281e-09, -3.36334, -3.40385, -2.53281e-09, 6.42629e-15, 12.5165, 7.6444, -9.89735)
-material_override = SubResource("StandardMaterial3D_argnx")
-mesh = SubResource("CylinderMesh_et0j3")
-skeleton = NodePath("../Enviroment/HangingSign2")
+[node name="PoleClock" parent="Clocks" instance=ExtResource("16_jor5b")]
+transform = Transform3D(0.958303, 0, 0.285755, 0, 1, 0, -0.285755, 0, 0.958303, -3.70938, -0.540298, -12.2035)
+
+[node name="PoleClock2" parent="Clocks" instance=ExtResource("16_jor5b")]
+transform = Transform3D(-0.994423, 0, 0.105466, 0, 1, 0, -0.105466, 0, -0.994423, -4.87583, -0.566206, 10.8208)
+
+[node name="BigClock" parent="Clocks" instance=ExtResource("17_4hplx")]
+transform = Transform3D(-0.0308351, 0, 0.999524, 0, 1, 0, -0.999524, 0, -0.0308351, -11.7667, 4.9, 5.72339)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8086, 0)
@@ -388,15 +440,7 @@ visible = false
 wait_time = 20.0
 one_shot = true
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.216, -0.769745, 0, -1.99607e-08, -5.31688e-07, 1.32126, -0.456648, -12.1636, -5.77542e-08, -8.38947, 0.00892362, -6.71347)
-material_override = SubResource("StandardMaterial3D_0rrmw")
-mesh = SubResource("QuadMesh_q1drv")
-
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource("17_mi7f2")
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
-
-[editable path="Clocks/ModernClock2"]
-[editable path="Clocks/ModernClock3"]

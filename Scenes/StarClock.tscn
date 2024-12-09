@@ -78,13 +78,20 @@ mesh = SubResource("PrismMesh_cqtb5")
 skeleton = NodePath("../../..")
 
 [node name="HoursHand" parent="Moveables" index="2"]
-transform = Transform3D(-0.233857, 0, -2.04444e-08, 0, 0.233857, 0, 2.04444e-08, 0, -0.233857, -0.00497168, 1.80738, 0.0272446)
+transform = Transform3D(-0.183749, 0, -1.60638e-08, 0, 0.183749, 0, 1.60638e-08, 0, -0.183749, -0.00106323, 1.80053, 0.0272446)
+offset = Vector2(0, 114.16)
+region_rect = Rect2(3628.63, 1645.66, 76.376, 452.542)
 
 [node name="MinutesHand" parent="Moveables" index="3"]
-transform = Transform3D(-0.233857, 0, -2.04444e-08, 0, 0.233857, 0, 2.04444e-08, 0, -0.233857, -0.00656984, 1.80799, 0.0319688)
+transform = Transform3D(-0.233857, 0, -2.04444e-08, 0, 0.233857, 0, 2.04444e-08, 0, -0.233857, -0.00720599, 1.80177, 0.0319688)
+offset = Vector2(0, 103.83)
+region_rect = Rect2(3730.83, 1646.22, 56.6907, 469.359)
 
 [node name="SecondsHand" parent="Moveables" index="4"]
-transform = Transform3D(-0.211786, 0, -4.2036e-09, 0, 0.18791, 0, 1.85149e-08, 0, -0.0480836, -0.00372438, 1.80416, 0.0352882)
+transform = Transform3D(-0.2, 0, -7.2478e-09, 0, 0.2, 0, 3.01992e-08, 0, -0.048, -0.00372438, 1.80416, 0.0446099)
+offset = Vector2(1.005, 106.335)
+modulate = Color(0.107109, 0.512051, 1, 1)
+region_rect = Rect2(3053.51, 1641.15, 119.836, 358.681)
 
 [node name="GnomeModel" parent="." index="1"]
 transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, 0.000737458, 1.06245, -0.514238)

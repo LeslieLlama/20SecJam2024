@@ -46,7 +46,7 @@ func _check_gnome():
 func _set_clock():
 	var hour = floor(Globals.clock_time)
 	var minute : float = Globals.clock_time - hour
-	$Moveables/DigitalReadout.text = str(hour,":",minute*100)
+	$Moveables/DigitalReadout.text = str(hour,":",int(minute)*100)
 	$Moveables/HoursHand.rotation_degrees.z = hour * 30
 	$Moveables/MinutesHand.rotation_degrees.z = minute * 600
 	

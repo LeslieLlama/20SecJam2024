@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1ocs6j38e06e"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_4hf1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xyvh"]
+albedo_color = Color(0.277528, 0.277528, 0.277528, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_shvxb"]
+lightmap_size_hint = Vector2i(33, 9)
+inner_radius = 0.566
+outer_radius = 0.726
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtpir"]
+albedo_color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_15csr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6nqya"]
+
+[node name="PoleClock" instance=ExtResource("1_4hf1t")]
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(2.04854, 0, 0, 0, 0.0776342, -1.99271, 0, 4.36043, 0.0354787, -0.0064168, 6.92811, -0.092453)
+material_override = SubResource("StandardMaterial3D_5xyvh")
+mesh = SubResource("TorusMesh_shvxb")
+
+[node name="HoursHand" parent="Moveables" index="2"]
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.034046, 6.86086, -0.0131953)
+offset = Vector2(0, 90.56)
+region_rect = Rect2(1977.01, 862.001, 45.0004, 373.003)
+
+[node name="MinutesHand" parent="Moveables" index="3"]
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0345233, 6.86609, 0.00560176)
+offset = Vector2(0, 123.77)
+flip_v = false
+region_rect = Rect2(2021.03, 860.544, 40.1279, 456.114)
+
+[node name="SecondsHand" parent="Moveables" index="4"]
+transform = Transform3D(-0.286047, 0, -5.67756e-09, 0, 0.253799, 0, 2.5007e-08, 0, -0.0649437, 0.0385281, 6.86463, -0.015564)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Moveables" index="5"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 8.54081, -0.0802568)
+material_override = SubResource("StandardMaterial3D_xtpir")
+mesh = SubResource("SphereMesh_15csr")
+skeleton = NodePath("../..")
+
+[node name="GnomeModel" parent="." index="1"]
+transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, 0.0994401, 5.91206, -0.859872)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(0.592974, 0, 0, 0, 2.61367, 0, 0, 0, 0.666917, 0, 3.04328, -0.0802568)
+material_override = SubResource("StandardMaterial3D_xtpir")
+mesh = SubResource("CylinderMesh_6nqya")

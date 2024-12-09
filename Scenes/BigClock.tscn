@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpvwvemnx8rfv"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_wtoqe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibuch"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_n265e"]
+lightmap_size_hint = Vector2i(33, 9)
+inner_radius = 0.637
+outer_radius = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qtd6"]
+albedo_color = Color(0.344076, 0.344076, 0.344076, 1)
+
+[node name="BigClock" instance=ExtResource("1_wtoqe")]
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(4.90051, 0, 0, 0, 0.0302918, -4.74486, 0, 1.70138, 0.0844787, 0, 1.869, 0)
+material_override = SubResource("StandardMaterial3D_ibuch")
+mesh = SubResource("TorusMesh_n265e")
+
+[node name="ClockBack" parent="Moveables/ClockModel" index="0"]
+material_override = SubResource("StandardMaterial3D_8qtd6")
+
+[node name="HoursHand" parent="Moveables" index="2"]
+transform = Transform3D(-0.56903, 0, -8.59212e-08, 0, 0.56903, 0, 8.59212e-08, 0, -0.56903, -0.00305039, 1.86615, -0.0131953)
+offset = Vector2(0, 103.665)
+flip_v = false
+modulate = Color(1, 1, 1, 1)
+region_rect = Rect2(7026.47, 987.992, 57.8511, 336.365)
+
+[node name="MinutesHand" parent="Moveables" index="3"]
+transform = Transform3D(-0.658453, 0, -9.94236e-08, 0, 0.658453, 0, 9.94236e-08, 0, -0.658453, -0.00583404, 1.87684, 0.00560177)
+offset = Vector2(0, 153.075)
+flip_v = false
+modulate = Color(1, 1, 1, 1)
+region_rect = Rect2(7086.82, 858.909, 56.3638, 462.729)
+
+[node name="SecondsHand" parent="Moveables" index="4"]
+transform = Transform3D(-0.457297, 0, -1.20797e-07, 0, 0.751812, 0, 6.90499e-08, 0, -0.8, -0.00458686, 1.89165, -0.015564)
+offset = Vector2(0, 149.86)
+flip_v = false
+modulate = Color(1, 0.326362, 0.170896, 1)
+region_rect = Rect2(6519.11, 856.546, 51.0127, 480.48)
