@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://dic5pvkxmxkqv"]
+
+[ext_resource type="PackedScene" uid="uid://bc1obhce5w5rx" path="res://Scenes/Clock.tscn" id="1_rlqc6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnrgl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmp03"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjnpf"]
+albedo_color = Color(0.890696, 0.888673, 0.87755, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_cqtb5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo67u"]
+albedo_color = Color(0.855067, 0.914022, 0.784232, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0v8oi"]
+albedo_color = Color(0.75844, 0.921055, 0.969586, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vwc6"]
+albedo_color = Color(0.841056, 0.824035, 0.567665, 1)
+
+[node name="Clock" instance=ExtResource("1_rlqc6")]
+
+[node name="ClockModel" parent="Moveables" index="0"]
+transform = Transform3D(0.927298, 0, 0, 0, 0.013712, -0.902026, 0, 0.770151, 0.0160599, 0, 1.869, 0)
+material_override = SubResource("StandardMaterial3D_fnrgl")
+
+[node name="ClockBack" parent="Moveables/ClockModel" index="0"]
+material_override = SubResource("StandardMaterial3D_bmp03")
+
+[node name="Spike1" type="MeshInstance3D" parent="Moveables/ClockModel" index="3"]
+transform = Transform3D(0.480575, 0, 0, 0, 0.0386542, 0.180821, 0, -1.85366, 0.00274872, 0.0111333, -0.0463577, -1.6027)
+material_override = SubResource("StandardMaterial3D_bjnpf")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike2" type="MeshInstance3D" parent="Moveables/ClockModel" index="4"]
+transform = Transform3D(-0.480575, 1.37853e-14, -1.31331e-08, -5.05698e-08, -0.0386544, 0.180821, -7.68726e-10, 1.85366, 0.00274873, 0.0111333, -0.0863817, 1.60671)
+material_override = SubResource("StandardMaterial3D_fo67u")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike3" type="MeshInstance3D" parent="Moveables/ClockModel" index="5"]
+transform = Transform3D(-2.10066e-08, 1.80371, 0, -0.0102989, -1.68963e-09, 0.180821, 0.493882, 8.1026e-08, 0.00274872, 1.56145, -0.0801409, 0.0173738)
+material_override = SubResource("StandardMaterial3D_0v8oi")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike4" type="MeshInstance3D" parent="Moveables/ClockModel" index="6"]
+transform = Transform3D(-2.10066e-08, -1.80371, 0, 0.0102989, -1.68963e-09, 0.180821, -0.493882, 8.1026e-08, 0.00274872, -1.56084, -0.0533122, 0.02087)
+material_override = SubResource("StandardMaterial3D_fo67u")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike5" type="MeshInstance3D" parent="Moveables/ClockModel" index="7"]
+transform = Transform3D(0.339818, -1.27542, 0, 0.00728241, 0.0273326, 0.180821, -0.349228, -1.31074, 0.00274872, -1.09912, -0.0460823, -1.12239)
+material_override = SubResource("StandardMaterial3D_fo67u")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike6" type="MeshInstance3D" parent="Moveables/ClockModel" index="8"]
+transform = Transform3D(0.339818, 1.27542, 0, -0.00728241, 0.0273326, 0.180821, 0.349228, -1.31073, 0.00274872, 1.11096, -0.0460819, -1.1224)
+material_override = SubResource("StandardMaterial3D_fo67u")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike7" type="MeshInstance3D" parent="Moveables/ClockModel" index="9"]
+transform = Transform3D(-0.339818, 1.27542, 0, -0.00728241, -0.0273326, 0.180821, 0.349228, 1.31073, 0.00274872, 1.11154, -0.0930826, 1.13151)
+material_override = SubResource("StandardMaterial3D_fo67u")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="Spike8" type="MeshInstance3D" parent="Moveables/ClockModel" index="10"]
+transform = Transform3D(-0.339818, -1.27542, 0, 0.00728241, -0.0273326, 0.180821, -0.349228, 1.31073, 0.00274872, -1.08065, -0.0930194, 1.12848)
+material_override = SubResource("StandardMaterial3D_2vwc6")
+mesh = SubResource("PrismMesh_cqtb5")
+skeleton = NodePath("../../..")
+
+[node name="HoursHand" parent="Moveables" index="2"]
+transform = Transform3D(-0.233857, 0, -2.04444e-08, 0, 0.233857, 0, 2.04444e-08, 0, -0.233857, -0.00497168, 1.80738, -0.0116554)
+
+[node name="MinutesHand" parent="Moveables" index="3"]
+transform = Transform3D(-0.233857, 0, -2.04444e-08, 0, 0.233857, 0, 2.04444e-08, 0, -0.233857, -0.00656984, 1.80799, 0.00226175)
+
+[node name="SecondsHand" parent="Moveables" index="4"]
+transform = Transform3D(-0.211786, 0, -4.2036e-09, 0, 0.18791, 0, 1.85149e-08, 0, -0.0480836, -0.00372439, 1.80416, -0.0134091)
+
+[node name="GnomeModel" parent="." index="1"]
+transform = Transform3D(0.348038, 0, 0, 0, 0.348038, 0, 0, 0, 0.348038, 0.000737458, 1.06245, -0.514238)

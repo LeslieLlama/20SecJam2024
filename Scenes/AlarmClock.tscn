@@ -24,6 +24,9 @@ mesh = ExtResource("3_m1s5m")
 [node name="ClockBack" parent="Moveables/ClockModel" index="0"]
 visible = false
 
+[node name="ClockBack2" parent="Moveables/ClockModel" index="1"]
+visible = false
+
 [node name="CollisionShape3D" parent="Moveables/ClockModel/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0.0264473, 1.18384, -2.22045e-16)
 shape = SubResource("BoxShape3D_wdxnd")
