@@ -7,7 +7,7 @@ var instruction_manual_active : bool = false
 var lock_UI : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	healthSprites = [$Health1,$Health2,$Health3]
+	healthSprites = [$HealthAnchor/Health1,$HealthAnchor/Health2,$HealthAnchor/Health3]
 	Signals.GameStart.connect(_GameStart)
 	Signals.GameEnd.connect(_GameEnd)
 	Signals.TakeDamage.connect(_TakeDamage)
@@ -42,9 +42,9 @@ func _on_start_game_button_up() -> void:
 	
 func _GameStart():
 	$Title.visible = false
-	$Health1.visible = true
-	$Health2.visible = true
-	$Health3.visible = true
+	$HealthAnchor/Health1.visible = true
+	$HealthAnchor/Health2.visible = true
+	$HealthAnchor/Health3.visible = true
 	$Mouseblocker.visible = false
 	Globals.health = 3
 	

@@ -31,3 +31,5 @@ mesh = SubResource("CylinderMesh_pbks1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0615234, 0.113708, -0.0376892)
 shape = SubResource("BoxShape3D_htwr2")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

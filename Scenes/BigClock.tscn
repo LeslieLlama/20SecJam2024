@@ -26,14 +26,14 @@ material_override = SubResource("StandardMaterial3D_8qtd6")
 transform = Transform3D(-0.56903, 0, -8.59212e-08, 0, 0.56903, 0, 8.59212e-08, 0, -0.56903, -0.00305039, 1.86615, -0.0131953)
 offset = Vector2(0, 103.665)
 flip_v = false
-modulate = Color(1, 1, 1, 1)
+modulate = Color(0.517184, 0.517184, 0.517184, 1)
 region_rect = Rect2(7026.47, 987.992, 57.8511, 336.365)
 
 [node name="MinutesHand" parent="Moveables" index="3"]
 transform = Transform3D(-0.658453, 0, -9.94236e-08, 0, 0.658453, 0, 9.94236e-08, 0, -0.658453, -0.00583404, 1.87684, 0.00560177)
 offset = Vector2(0, 153.075)
 flip_v = false
-modulate = Color(1, 1, 1, 1)
+modulate = Color(0.517184, 0.517184, 0.517184, 1)
 region_rect = Rect2(7086.82, 858.909, 56.3638, 462.729)
 
 [node name="SecondsHand" parent="Moveables" index="4"]

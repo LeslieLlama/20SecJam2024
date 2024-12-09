@@ -29,7 +29,7 @@ transform = Transform3D(1.31821, 0, 0, 0, 0.0207436, 0, 0, 0, 1.31821, 0, -0.510
 visible = false
 
 [node name="HoursHand" parent="Moveables" index="2"]
-transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0280791, 1.67187, 0.669732)
+transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0929764, 1.64737, 0.751059)
 
 [node name="MinutesHand" parent="Moveables" index="3"]
 transform = Transform3D(-0.315857, 0, -2.76131e-08, 0, 0.315857, 0, 2.76131e-08, 0, -0.315857, 0.0285275, 1.67269, 0.686579)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cdrhtw8i0jxxp"]
+[gd_scene load_steps=53 format=3 uid="uid://cdrhtw8i0jxxp"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_j8mr0"]
 [ext_resource type="Script" path="res://Scripts/shop_scene.gd" id="1_rdwyc"]
@@ -18,6 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://c1ocs6j38e06e" path="res://Scenes/pole_clock.tscn" id="16_jor5b"]
 [ext_resource type="PackedScene" uid="uid://cpvwvemnx8rfv" path="res://Scenes/BigClock.tscn" id="17_4hplx"]
 [ext_resource type="Script" path="res://Scenes/save_manager.gd" id="17_mi7f2"]
+[ext_resource type="Script" path="res://Scenes/audio_manager.gd" id="19_evgm6"]
+[ext_resource type="AudioStream" uid="uid://cmldxeophmv8r" path="res://Audio/buttonthatkillsyou.ogg" id="20_rbxoe"]
+[ext_resource type="AudioStream" uid="uid://dbt5jnvex86ru" path="res://Audio/613393__elzozo__double-bass-upright-jazz-loop.ogg" id="21_ljxc1"]
+[ext_resource type="AudioStream" uid="uid://5kv8tkgptm31" path="res://Audio/clocktick20sec.ogg" id="21_yue1d"]
+[ext_resource type="AudioStream" uid="uid://cpoktcpv7nhau" path="res://Audio/559850__migfus20__jazz-background-music-loop.mp3" id="22_a4cxf"]
+[ext_resource type="AudioStream" uid="uid://wkwnoof6wqsf" path="res://Audio/failurehonk.ogg" id="22_ijttp"]
+[ext_resource type="AudioStream" uid="uid://cpu85uuijfv7e" path="res://Audio/success.ogg" id="23_pp1ef"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpctc"]
 albedo_color = Color(0.505362, 0.280434, 0.169235, 1)
@@ -87,6 +94,14 @@ uv1_offset = Vector3(-0.91, -0.925, 0)
 [sub_resource type="CylinderMesh" id="CylinderMesh_et0j3"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5davn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mrx6"]
+albedo_color = Color(0.682405, 0.552246, 0.64082, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a0k53"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajsh4"]
+albedo_color = Color(0.490196, 0.384314, 0.443137, 1)
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Clocks")]
 script = ExtResource("1_rdwyc")
@@ -352,6 +367,66 @@ mesh = SubResource("SphereMesh_5davn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9505, 8.67008, -11.4709)
 mesh = SubResource("SphereMesh_5davn")
 
+[node name="Shoebox" type="Node3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58783, -1.15237, -12.8741)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Shoebox"]
+transform = Transform3D(2.97254, 0, 0, 0, 1.60505, 0, 0, 0, 2.67854, -0.795631, 1.78264, 1.61119)
+material_override = SubResource("StandardMaterial3D_3mrx6")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enviroment/Shoebox"]
+transform = Transform3D(3.34172, 0, 0, 0, 0.697097, 0, 0, 0, 3.13991, -0.799547, 2.71143, 1.61852)
+material_override = SubResource("StandardMaterial3D_ajsh4")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="Shoebox4" type="Node3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7906, -1.06442, 9.41324)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Shoebox4"]
+transform = Transform3D(2.97254, 0, 0, 0, 1.60505, 0, 0, 0, 2.67854, -0.795631, 1.78264, 1.61119)
+material_override = SubResource("StandardMaterial3D_3mrx6")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enviroment/Shoebox4"]
+transform = Transform3D(3.34172, 0, 0, 0, 0.697097, 0, 0, 0, 3.13991, -0.799547, 2.71143, 1.61852)
+material_override = SubResource("StandardMaterial3D_ajsh4")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="Shoebox3" type="Node3D" parent="Enviroment"]
+transform = Transform3D(0.9961, -9.3142e-05, 0.0882362, 8.51458e-05, 1, 9.42692e-05, -0.0882362, -8.63774e-05, 0.9961, 2.91473, 0.951232, -12.9619)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Shoebox3"]
+transform = Transform3D(2.97254, 0, 0, 0, 1.60505, 0, 0, 0, 2.67854, -0.795631, 1.78264, 1.61119)
+material_override = SubResource("StandardMaterial3D_3mrx6")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enviroment/Shoebox3"]
+transform = Transform3D(3.34172, 0, 0, 0, 0.697097, 0, 0, 0, 3.13991, -0.799547, 2.71143, 1.61852)
+material_override = SubResource("StandardMaterial3D_ajsh4")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="Shoebox2" type="Node3D" parent="Enviroment"]
+transform = Transform3D(0.88441, 0, 0.466711, 0, 1, 0, -0.466711, 0, 0.88441, 3.59731, -1.15237, -12.7338)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Shoebox2"]
+transform = Transform3D(2.97254, 0, 0, 0, 1.60505, 0, 0, 0, 2.67854, -0.795631, 1.78264, 1.61119)
+material_override = SubResource("StandardMaterial3D_3mrx6")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enviroment/Shoebox2"]
+transform = Transform3D(3.34172, 0, 0, 0, 0.697097, 0, 0, 0, 3.13991, -0.799547, 2.71143, 1.61852)
+material_override = SubResource("StandardMaterial3D_ajsh4")
+mesh = SubResource("BoxMesh_a0k53")
+skeleton = NodePath("../../..")
+
 [node name="Clocks" type="Node3D" parent="."]
 
 [node name="Clock1" parent="Clocks" instance=ExtResource("2_78t57")]
@@ -442,5 +517,32 @@ one_shot = true
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource("17_mi7f2")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("19_evgm6")
+
+[node name="RedDeathSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("20_rbxoe")
+volume_db = -5.0
+
+[node name="GameActiveMusic" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("21_ljxc1")
+volume_db = -5.0
+
+[node name="IdleMenuMusic" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("22_a4cxf")
+volume_db = -5.0
+
+[node name="ClockTicking" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("21_yue1d")
+volume_db = -5.0
+
+[node name="GameFailedSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("22_ijttp")
+volume_db = -5.0
+
+[node name="GameWonSound" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("23_pp1ef")
+volume_db = -5.0
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

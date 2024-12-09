@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://iyqn1tdosatm"]
+
+[ext_resource type="FontFile" uid="uid://bbfnqpdvvicux" path="res://Fonts/Type Machine.ttf" id="1_dgvcb"]
+
+[resource]
+default_font = ExtResource("1_dgvcb")
+default_font_size = 0

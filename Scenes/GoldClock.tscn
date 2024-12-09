@@ -44,6 +44,7 @@ transform = Transform3D(-0.175085, 0, -1.53065e-08, 0, 0.175085, 0, 1.53065e-08,
 
 [node name="SecondsHand" parent="Moveables" index="4"]
 transform = Transform3D(-0.158561, 0, -3.14718e-09, 0, 0.140685, 0, 1.38618e-08, 0, -0.0359995, -0.00938018, 1.83715, -0.0120677)
+modulate = Color(0.934076, 0.551139, 0.176104, 1)
 
 [node name="Foot1" type="MeshInstance3D" parent="Moveables" index="5"]
 transform = Transform3D(0.257438, 0.199452, 0, -0.199452, 0.257438, 0, 0, 0, 0.325661, -0.748989, 0.76222, -0.0260509)
