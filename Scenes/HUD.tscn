@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c532eyni0s47u"]
+[gd_scene load_steps=4 format=3 uid="uid://c532eyni0s47u"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_ltfgw"]
 [ext_resource type="Texture2D" uid="uid://ccy4cen4myktr" path="res://Sprites/CustomCursor.png" id="1_ma8xu"]
+[ext_resource type="Texture2D" uid="uid://cr57kvlh5nwqc" path="res://Sprites/GnomeHuntingManual.png" id="3_i0oo1"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -146,20 +147,13 @@ offset_bottom = 575.0
 mouse_filter = 2
 color = Color(0.355314, 0.355314, 0.355314, 1)
 
-[node name="Label" type="Label" parent="InstructionManual"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = -11.5
-offset_right = 72.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "(Instructions Here)"
+[node name="TextureRect" type="TextureRect" parent="InstructionManual"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 906.0
+offset_bottom = 535.0
+texture = ExtResource("3_i0oo1")
+expand_mode = 3
 
 [connection signal="button_up" from="StartGame" to="." method="_on_start_game_button_up"]
 [connection signal="button_up" from="HowToPlayButton" to="." method="_on_how_to_play_button_button_up"]
