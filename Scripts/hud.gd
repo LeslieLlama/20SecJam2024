@@ -69,7 +69,9 @@ func _RedDeath():
 	tween.tween_property($RedDeath, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE)
 	
 func _ResetGame():
-	
+	$HealthAnchor/Health1.visible = false
+	$HealthAnchor/Health2.visible = false
+	$HealthAnchor/Health3.visible = false
 	$StartGame.visible = true
 	await get_tree().create_timer(0.8).timeout
 	$Title.visible = true

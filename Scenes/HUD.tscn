@@ -99,16 +99,19 @@ offset_bottom = 113.0
 grow_horizontal = 2
 
 [node name="Health1" type="Sprite2D" parent="HealthAnchor"]
+visible = false
 position = Vector2(149.206, 27)
 scale = Vector2(0.631424, 0.648095)
 texture = ExtResource("1_ma8xu")
 
 [node name="Health2" type="Sprite2D" parent="HealthAnchor"]
+visible = false
 position = Vector2(97.4116, 25.739)
 scale = Vector2(0.631424, 0.648095)
 texture = ExtResource("1_ma8xu")
 
 [node name="Health3" type="Sprite2D" parent="HealthAnchor"]
+visible = false
 position = Vector2(45.2056, 26)
 scale = Vector2(0.631424, 0.648095)
 texture = ExtResource("1_ma8xu")
