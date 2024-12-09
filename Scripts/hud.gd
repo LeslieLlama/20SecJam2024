@@ -54,8 +54,7 @@ func _GameEnd(GameWon : bool):
 		CurrentGameState = GameState.IDLE
 		$GameOverMessage.visible = false
 		$Mouseblocker.visible = true
-		_ResetGame()
-	else: 
+	if(GameWon == true):
 		$GameWonMessage.visible = true
 		await get_tree().create_timer(4.0).timeout
 		CurrentGameState = GameState.IDLE

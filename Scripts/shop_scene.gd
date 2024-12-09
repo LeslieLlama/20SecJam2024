@@ -17,7 +17,9 @@ func _GameStart():
 	_setClockTime()
 	_PickClock()
 	
-	
+func _GameWon():
+	$GameTimer.stop()
+
 func _PickClock():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
@@ -41,6 +43,7 @@ func _TakeDamage():
 		Globals.health -= 1
 	if Globals.health == 0:
 		Signals.emit_signal("GameEnd", false)
+		$GameTimer.stop()
 
 
 func _on_game_timer_timeout() -> void:
