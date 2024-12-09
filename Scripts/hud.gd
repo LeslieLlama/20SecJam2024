@@ -4,7 +4,7 @@ enum GameState {IDLE, PLAY_GAME}
 var CurrentGameState = GameState.IDLE
 var healthSprites: Array[Node] = []
 var instruction_manual_active : bool = false
-
+var lock_UI : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	healthSprites = [$Health1,$Health2,$Health3]
@@ -35,9 +35,10 @@ func _on_how_to_play_button_button_up() -> void:
 	
 
 func _on_start_game_button_up() -> void:
-	Signals.emit_signal("GameStart")
-	$StartGame.visible = false
-	CurrentGameState = GameState.PLAY_GAME
+	if lock_UI == false:
+		Signals.emit_signal("GameStart")
+		$StartGame.visible = false
+		CurrentGameState = GameState.PLAY_GAME
 	
 func _GameStart():
 	$Title.visible = false
@@ -48,6 +49,7 @@ func _GameStart():
 	Globals.health = 3
 	
 func _GameEnd(GameWon : bool):
+	lock_UI = true
 	if(GameWon == false):
 		$GameOverMessage.visible = true
 		await get_tree().create_timer(2.0).timeout
@@ -71,6 +73,7 @@ func _ResetGame():
 	$StartGame.visible = true
 	await get_tree().create_timer(0.8).timeout
 	$Title.visible = true
+	lock_UI = false
 	
 func _TakeDamage():
 	healthSprites[Globals.health - 1].visible = false
