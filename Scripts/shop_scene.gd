@@ -7,18 +7,29 @@ var CurrentGameState = GameState.IDLE
 func _ready() -> void:
 	Signals.GameStart.connect(_GameStart)
 	Signals.TakeDamage.connect(_TakeDamage)
+	Signals.GameEnd.connect(_GameEnd)
+	await get_tree().create_timer(0.5).timeout
+	Signals.emit_signal("LoadGame")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	Globals.time_remaining = $GameTimer.time_left
 
 func _GameStart():
+	$GameTimer.set_paused(false)
 	$GameTimer.start()
 	_setClockTime()
 	_PickClock()
 	
-func _GameWon():
-	$GameTimer.stop()
+func _GameEnd(game_won : bool):
+	$GameTimer.set_paused(true)
+	if game_won == true:
+		print("time left: ", $GameTimer.time_left)
+		if $GameTimer.time_left > Globals.high_score:
+			Globals.high_score = $GameTimer.time_left
+			Signals.emit_signal("SaveGame")
+			
+	
 
 func _PickClock():
 	var random = RandomNumberGenerator.new()

@@ -9,3 +9,7 @@ signal GameStart()
 signal GameEnd(GameWon : bool)
 signal TakeDamage()
 signal RedDeath()
+
+signal SaveGame()
+signal LoadGame()
+signal DataLoaded()

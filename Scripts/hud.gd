@@ -18,11 +18,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if CurrentGameState == GameState.IDLE:
-		$TimeRemainingLabel.text = str("Fastest Time: 11.11 seconds")
+		$TimeRemainingLabel.text = str("Fastest Time: ","%1.2f" % (Globals.high_score)," seconds")
 	if CurrentGameState == GameState.PLAY_GAME:
-		$TimeRemainingLabel.text = str(Globals.time_remaining," Seconds")
+		$TimeRemainingLabel.text = str("%1.2f" % (Globals.time_remaining)," Seconds")
+
 
 func _on_how_to_play_button_button_up() -> void:
 	if instruction_manual_active == false:
