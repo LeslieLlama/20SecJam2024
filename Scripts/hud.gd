@@ -19,7 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if CurrentGameState == GameState.IDLE:
-		$TimeRemainingLabel.text = str("Fastest Time: ","%1.2f" % (Globals.high_score)," seconds")
+		$TimeRemainingLabel.text = str("Fastest Time: ","%1.2f" % (20 - Globals.high_score)," seconds")
 	if CurrentGameState == GameState.PLAY_GAME:
 		$TimeRemainingLabel.text = str("%1.2f" % (Globals.time_remaining)," Seconds")
 
@@ -57,10 +57,14 @@ func _GameEnd(GameWon : bool):
 		$GameOverMessage.visible = false
 		$Mouseblocker.visible = true
 	if(GameWon == true):
+		$GameWonMessage2.visible = true
+		$GameWonMessage2.text = str("Found in: ","%1.2f" % (20 - Globals.time_remaining)," seconds")
 		$GameWonMessage.visible = true
 		await get_tree().create_timer(4.0).timeout
 		CurrentGameState = GameState.IDLE
 		$GameWonMessage.visible = false
+		$GameWonMessage2.visible = false
+		
 	_ResetGame()
 
 func _RedDeath():

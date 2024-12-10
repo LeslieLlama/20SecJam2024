@@ -67,6 +67,26 @@ theme = ExtResource("2_tj527")
 theme_override_font_sizes/font_size = 30
 text = "FOUND THE GNOME!!!!!!!!!"
 
+[node name="GameWonMessage2" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633
+anchor_top = 0.564
+anchor_right = 0.633
+anchor_bottom = 0.564
+offset_left = -398.216
+offset_top = -37.472
+offset_right = -271.216
+offset_bottom = -3.47198
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.4211, 3.42381)
+theme = ExtResource("2_tj527")
+theme_override_font_sizes/font_size = 15
+text = "in 4.6 seconds"
+horizontal_alignment = 1
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
